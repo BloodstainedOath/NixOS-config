@@ -15,6 +15,7 @@
       liberation_ttf
       noto-fonts-color-emoji
       nerd-fonts.symbols-only
+      cinzel
     ];
   };
 }
