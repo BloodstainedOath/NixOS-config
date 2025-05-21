@@ -61,6 +61,7 @@
    btop
    fontfinder
    font-manager
+   (callPackage ./custom-packages/sddm-theme.nix {}).sddm-theme
  ];
 
   system.stateVersion = "24.11";

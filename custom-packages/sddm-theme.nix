@@ -17,11 +17,10 @@
     };
 
     buildInputs = [
-  qt6.qtbase
-  qt6.qtdeclarative
-  qt6.qt5compat
-  pkgs.qt6Packages.sddm
-];
+      qt6.qtbase
+      qt6.qtdeclarative
+      qt6.qt5compat
+  ];
 
     installPhase = ''
       mkdir -p $out/share/sddm/themes/sddm-theme
