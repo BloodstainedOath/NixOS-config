@@ -62,8 +62,8 @@
 
   hardware.nvidia.prime = {
     sync.enable = true;              # Enable PRIME Sync — prevents tearing
-    nvidiaBusId = "PCI:1:0:0";       # Replace with your actual NVIDIA GPU bus ID
-    intelBusId = "PCI:0:2:0";        # Replace with your integrated GPU bus ID
+    nvidiaBusId = "PCI:01:00:0";       # Replace with your actual NVIDIA GPU bus ID
+    intelBusId = "PCI:00:02:0";        # Replace with your integrated GPU bus ID
   };
 
 }

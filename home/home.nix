@@ -47,6 +47,7 @@
 gtk = {
   enable = true;
   theme.name = "Sweet-Dark";
+  # font.name = "Cinzel Decorative";
   theme.package = pkgs.sweet;
 
 
