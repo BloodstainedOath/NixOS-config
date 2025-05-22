@@ -13,7 +13,7 @@ let
     repo = "RaidenShogun-GRUB-Theme";
     rev = "440e8d056d71c71f1c83b5bd8b7d9a6655e0a678";
     hash = "sha256-0kxnJUIExNIi+YesIfrArrTuCYSV4H6vB8jJHu6LoXk=";
-  } + "/RaidenShogun";
+  } + "/RaidenShogun_en";
 
 in
 {
@@ -26,7 +26,7 @@ in
       device = "nodev";
 
       # ✨ Pick your favorite theme here
-      theme = sekiroTheme;  # Change to sekiroTheme, wutheringTheme, etc.
+      theme = raidenTheme;  # Change to sekiroTheme, wutheringTheme, etc.
     };
 
     efi.canTouchEfiVariables = true;

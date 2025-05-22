@@ -13,9 +13,10 @@
       sensitivity = 0;
 
       touchpad = {
+        disable_while_typing=true;
         natural_scroll = true;
       };
-    };1
+    };
 
     gestures = {
       workspace_swipe = true;
