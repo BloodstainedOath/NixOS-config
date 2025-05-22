@@ -15,7 +15,7 @@
       background = "#1a1b26";
       foreground = "#c0caf5";
       cursor = "#c0caf5";
-      cursor_shape = "line";
+      cursor_shape = "beam";
       selection_foreground = "#000000";
       selection_background = "#c0caf5";
       window_margin_width = "8";
