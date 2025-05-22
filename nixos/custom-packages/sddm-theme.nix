@@ -12,8 +12,8 @@
     src = fetchFromGitHub {
       owner = "BloodstainedOath";
       repo = "sddm-theme";
-      rev = "4117b4688b460a2398482bcc5d485dc7abce27d7";
-      sha256 = "sha256-pBsWWBFLnzTa7AEKOIF1mmlZXEGq6m9z4kiYMvLprw0=";
+      rev = "2090db355cde117b181b27839737196ec14058d2";
+      sha256 = "sha256-7LCwG9TkKtVh8kcAYOhVz+TcYEEJlE7GUrIjyE6cAVk=";
     };
 
     buildInputs = [

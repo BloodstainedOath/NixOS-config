@@ -4,16 +4,29 @@
   wayland.windowManager.hyprland.settings = {
     
     "$mainMod" = "SUPER";
+    "$terminal" = "kitty";
+    "$filemanager" = "nautilus";
+    "$menu" = "wofi --show drun";
+    "$browser" = "firefox-devedition";
+    "$codeEditor" = "codium";
 
     bind = [
-      
-      # Window Mnagerment
-      "$mainMod, Q, killactive,"
-      "$mainMod, T, togglefloating,"
-      "$mainMod, P, pseudo," # dwindle
-      "$mainMod, J, togglesplit," # dwindle
+      # Window Management
+      "$mainMod, Q, killactive"
+      "$mainMod, M, exit"
       "$mainMod, F, fullscreen"
-      "$mainMod, M, exit,"
+      "$mainMod SHIFT, F, togglefloating"
+
+      # Group creation and management
+      "$mainMod, G, togglegroup"
+      "$mainMod SHIFT, G, lockactivegroup, toggle"  # Lock/unlock group
+      "$mainMod CTRL, G, moveoutofgroup"            # Move window out of group
+
+      # Group navigation
+      "$mainMod, TAB, changegroupactive, f"         # Next tab in group
+      "$mainMod SHIFT, TAB, changegroupactive, b"   # Previous tab in group
+      "$mainMod, bracketright, changegroupactive, f"  # ] - Next tab
+      "$mainMod, bracketleft, changegroupactive, b"   # [ - Previous tab
 
       # Focus And Movement
       "$mainMod, left, movefocus, l"
@@ -21,13 +34,19 @@
       "$mainMod, up, movefocus, u"
       "$mainMod, down, movefocus, d"
 
+      # Windows Movement
+      "$mainMod SHIFT, left, movewindow, l"
+      "$mainMod SHIFT, right, movewindow, r"
+      "$mainMod SHIFT, up, movewindow, u"
+      "$mainMod SHIFT, down, movewindow, d"
+
       #######################
       ## WORKSPACE CONTROL ##
       #######################
 
       # Switch workspaces with mainMod + [0-9]
-      "$mainMod, 2, workspace, 2"
       "$mainMod, 1, workspace, 1"
+      "$mainMod, 2, workspace, 2"
       "$mainMod, 3, workspace, 3"
       "$mainMod, 4, workspace, 4"
       "$mainMod, 5, workspace, 5"
@@ -36,7 +55,7 @@
       "$mainMod, 8, workspace, 8"
       "$mainMod, 9, workspace, 9"
       "$mainMod, 0, workspace, 10"
-      
+
       # Move active window to a workspace
       "$mainMod SHIFT, 1, movetoworkspace, 1"
       "$mainMod SHIFT, 2, movetoworkspace, 2"
@@ -48,66 +67,66 @@
       "$mainMod SHIFT, 8, movetoworkspace, 8"
       "$mainMod SHIFT, 9, movetoworkspace, 9"
       "$mainMod SHIFT, 0, movetoworkspace, 10"
-      
+
       # Scroll through workspaces
       "$mainMod, mouse_down, workspace, e+1"
       "$mainMod, mouse_up, workspace, e-1"
+
+      # Special workspaces
+      "$mainMod, S, togglespecialworkspace, magic"
+      "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
       ##########################
       ### APPLICATION LAUNCH ###
       ##########################
 
       # Terminal and file management
-      "$mainMod, RETURN, exec, kitty"
-      "$mainMod, E, exec, nautilus"
+      "$mainMod, RETURN, exec, $terminal"
+      "$mainMod, E, exec, $filemanager"
 
       # Launchers and menus
       "$mainMod, R, exec, wofi --show drun"
       "$mainMod CTRL, RETURN, exec, $menu"
 
       # Browsers and communication
-      "$mainMod, B, exec, firefox-devedition"
+      "$mainMod, B, exec, $browser"
       "$mainMod, D, exec, vesktop"
 
       # Development and productivity
       "$mainMod SHIFT, V, exec, codium"
 
-      # Entertainment
-      "$mainMod Shift, S, exec, steam"
-      "$mainMod, H, exec, heroic"
-
-      # System utilities
-      "$mainMod SHIFT, B, exec, waybar &"
-      "$mainMod CTRL, B, exec, swaync &"
-      "$mainMod, L, exec, hyprlock"
+      # ScreenShot bindings
+      "$mainMod, Print, exec, flameshot full"
+      "$mainMod SHIFT, Print, exec, flameshot gui"
+      "$mainMod CTRL, Print, exec, flameshot screen"
+      "$mainMod CTRL SHIFT, Print, exec, flameshot full -c "
 
       #############################
-      ### WALLPAPER CONTROLS ###
+      ####  WALLPAPER CONTROLS ####
       #############################
 
       "$mainMod SHIFT, W, exec, waypaper --random"
       "$mainMod CTRL, W, exec, waypaper"
+    ];
 
-      #######################
-      ### MULTIMEDIA KEYS ###
-      #######################
+    #######################
+    ### MULTIMEDIA KEYS ###
+    #######################
 
-      # Volume controls
-      ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-      ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-      ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-      ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+    binde = [
+      # Volume control with repeat
+      ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +2%"
+      ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -2%"
 
-      # Brightness controls
-      ",XF86MonBrightnessUp, exec, brightnessctl s 2%+"
-      ",XF86MonBrightnessDown, exec, brightnessctl s 2%-"
+      # Brightness control with repeat
+      ", XF86MonBrightnessUp, exec, brightnessctl set +2%"
+      ", XF86MonBrightnessDown, exec, brightnessctl set 2%-"
 
-      # Media player controls
-      ", XF86AudioNext, exec, playerctl next"
-      ", XF86AudioPause, exec, playerctl play-pause"
-      ", XF86AudioPlay, exec, playerctl play-pause"
-      ", XF86AudioPrev, exec, playerctl previous"
-
+      # Window resizing
+      "$mainMod CTRL, left, resizeactive, -20 0"
+      "$mainMod CTRL, right, resizeactive, 20 0"
+      "$mainMod CTRL, up, resizeactive, 0 -20"
+      "$mainMod CTRL, down, resizeactive, 0 20"
     ];
 
     bindm = [

@@ -7,13 +7,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       tree
-      firefox-devedition
-      vscodium
-      vlc
-      eog
-      nautilus
-      waypaper
-      swww
     ];
   };
 

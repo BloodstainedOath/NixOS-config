@@ -55,6 +55,50 @@
         smart_resizing = true;        
         special_scale_factor = 0.8;
         new_status = "slave";
-        };
+    };
+
+    misc = {
+      # font_family = "Cinzel";
+      animate_manual_resizes = true;
+      vfr = false;
+    };
+
+    env = [
+      "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+      "XDG_CURRENT_DESKTOP,Hyprland"
+      "XDG_SESSION_DESKTOP,Hyprland"
+      "XDG_SESSION_TYPE,wayland"
+      "LIBVA_DRIVER_NAME,nvidia"
+      "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+      "NVD_BACKEND,direct"
+      "GBM_BACKEND,nvidia-drm"
+    ];
+
+    group = {
+      # Group border colors
+      "col.border_active" = "rgba(88c0d0ff)";      # Active group border (Nord blue)
+      "col.border_inactive" = "rgba(4c566aff)";    # Inactive group border (Nord gray)
+      "col.border_locked_active" = "rgba(d08770ff)"; # Locked active group (Nord orange)
+      "col.border_locked_inactive" = "rgba(5e81acff)"; # Locked inactive group
+      
+      # Groupbar (tab bar) styling
+      groupbar = {
+        enabled = true;
+        font_family = "JetBrains Mono";            # Your preferred font
+        font_size = 10;
+        gradients = false;
+        height = 20;
+        priority = 3;
+        render_titles = true;
+        scrolling = true;
+        text_color = "rgba(eceff4ff)";             # Text color (Nord white)
+        
+        # Tab colors
+        "col.active" = "rgba(5e81acff)";           # Active tab background
+        "col.inactive" = "rgba(3b4252ff)";         # Inactive tab background
+        "col.locked_active" = "rgba(d08770ff)";    # Locked active tab
+        "col.locked_inactive" = "rgba(4c566aff)";  # Locked inactive tab
+      };
   };
+};
 }

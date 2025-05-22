@@ -7,6 +7,7 @@
     ./binds.nix
     ./appearance.nix
     ./layout.nix
+    ./windowrule.nix
   ];
 
 

@@ -13,18 +13,13 @@
       sensitivity = 0;
 
       touchpad = {
-        disable_while_typing=true;
+        disable_while_typing = true;
         natural_scroll = true;
       };
     };
 
     gestures = {
       workspace_swipe = true;
-    };
-
-    device = {
-      name = "epic-mouse-v1";
-      sensitivity = -0.5;
     };
   };
 }

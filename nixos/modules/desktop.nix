@@ -16,16 +16,4 @@ hardware = {
   nvidia.modesetting.enable = true;
 };
 
-environment.systemPackages = with pkgs; [
-  waybar
-  wofi
-  rofi
-  waypaper
-  swww
-  pywal16
-  wallust
-  libnotify
-  appimage-run
-  ];
-
 }

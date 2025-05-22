@@ -62,6 +62,12 @@
    fontfinder
    font-manager
    (callPackage ./custom-packages/sddm-theme.nix {}).sddm-theme
+   xdg-desktop-portal
+   xdg-desktop-portal-gtk
+   xdg-desktop-portal-hyprland
+   libnotify
+   appimage-run
+   brightnessctl
  ];
 
   system.stateVersion = "24.11";

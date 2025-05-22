@@ -8,8 +8,19 @@
   home.username = "hunter";
   home.homeDirectory = "/home/hunter";
 
-  home.packages = [
-    pkgs.sweet
+  home.packages = with pkgs; [
+    sweet
+    firefox-devedition
+    vscodium
+    vlc
+    eog
+    nautilus
+    waypaper
+    swww
+    rofi
+    wofi
+    waybar
+    flameshot
   ];
 
   home.file = {
