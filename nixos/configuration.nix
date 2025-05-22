@@ -70,6 +70,10 @@
    appimage-run
    brightnessctl
  ];
+  environment.variables = {
+    XCURSOR_THEME = "Bibata-Rainbow-Modern";
+    XCURSOR_SIZE = "24"; # Optional: set cursor size (16, 24, 32, 48)
+  };
 
   system.stateVersion = "24.11";
 

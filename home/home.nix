@@ -3,6 +3,7 @@
 {
   imports = [
     ./modules/hyprland/hyprland.nix
+    ./modules/kitty/kitty.nix
   ];
 
   home.username = "hunter";
@@ -71,7 +72,7 @@ iconTheme = {
     # Don't add a `package` if you installed it manually
   };
  cursorTheme = {
-    name = "Bibata-Rainbow-Modern";
+    name = "bibata-cursor-rainbow-modern";
     size = 24;
   };
 };

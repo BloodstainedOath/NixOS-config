@@ -9,12 +9,12 @@ let
 
     src = pkgs.fetchurl {
       url = "https://github.com/ful1e5/Bibata_Cursor_Rainbow/releases/download/v${version}/Bibata-Rainbow-Modern.tar.gz";
-      sha256 = "sha256-nXimra1nMDpXEgBjYWkVCfVmYAZmMM/hy+orq2WAQZI=";
+      sha256 = "sha256-uwjLgMSexsvxRcebAt36WkkQw2aVIJ+t/zai0iHMK5A=";
     };
 
     installPhase = ''
-      mkdir -p $out/share/icons
-      cp -r Bibata-Rainbow-Modern $out/share/icons/
+      mkdir -p $out/share/icons/Bibata-Rainbow-Modern
+      cp -r * $out/share/icons/Bibata-Rainbow-Modern/
     '';
 
     meta = with pkgs.lib; {
