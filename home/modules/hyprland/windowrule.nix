@@ -4,7 +4,6 @@
   wayland.windowManager.hyprland.settings = {
 
   windowrule = [
-    "float, ^(waypaper)$"
     "center, title:^(Open File)(.*)$"
     "center, title:^(Select a File)(.*)$"
     "center, title:^(Choose wallpaper)(.*)$"
@@ -29,7 +28,9 @@
 
     # App pinning
     "pin, title:^(rofi - APPS)$"
+    "float, title:^(Waypaper)$"
     "pin, title:^(Waypaper)$"
+
 
     # Opacity rules
     "opacity 0.90 0.90, class:^(org.gnome.Nautilus)$"
@@ -38,7 +39,7 @@
     # Uncomment these if needed
     # "noborder, class:^(kitty)$"
     # "noshadow, class:^(kitty)$"
-  ];
-};
+    ];
+  };
 
 }

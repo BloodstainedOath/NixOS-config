@@ -20,7 +20,7 @@
     rofi
     wofi
     waybar
-    flameshot
+    hyprshot
   ];
 
   home.file = {

@@ -17,6 +17,7 @@
         "snappy, 0.4, 0, 0.2, 1"                # Snappy response
         "linear, 0, 0, 1, 1"                    # Linear timing
         "borderColor, 0.3, 0.7, 0.4, 1.0"       # Border color transitions
+        "popupBezier, 0.1, 0.9, 0.1, 1.05"      # Popup animation curve - quick appearance with slight bounce
         
         # Fantasy/Mystical animations
         "mystical, 0.25, 0.46, 0.45, 0.94"      # Smooth mystical fade

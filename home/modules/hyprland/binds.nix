@@ -96,10 +96,15 @@
       "$mainMod SHIFT, V, exec, codium"
 
       # ScreenShot bindings
-      "$mainMod, Print, exec, flameshot full"
-      "$mainMod SHIFT, Print, exec, flameshot gui"
-      "$mainMod CTRL, Print, exec, flameshot screen"
-      "$mainMod CTRL SHIFT, Print, exec, flameshot full -c "
+      # "$mainMod, Print, exec, flameshot full"
+      # "$mainMod SHIFT, Print, exec, flameshot gui"
+      # "$mainMod CTRL, Print, exec, flameshot screen"
+      # "$mainMod CTRL SHIFT, Print, exec, flameshot full -c "
+
+
+      "$mainMod, Print, exec, hyprshot -m output"
+      "$mainMod SHIFT, Print, exec, hyprshot -m region"
+      "$mainMod CTRL, Print, exec, hyprshot -m window"
 
       #############################
       ####  WALLPAPER CONTROLS ####

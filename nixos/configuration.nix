@@ -17,6 +17,7 @@
       ./modules/bootloader.nix
       ./modules/sddm.nix
       ./modules/fonts.nix
+      ./custom-packages/cursor.nix
       inputs.home-manager.nixosModules.home-manager
     ];
 
