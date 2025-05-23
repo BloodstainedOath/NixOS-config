@@ -3,19 +3,24 @@
 {
   programs.waybar = {
     enable = true;
+    package = pkgs.waybar;
+
     settings = {
       mainBar = {
-        layer = "top";
-        position = "top";
         height = 30;
+        layer = "top";
 
         modules-left = [
           "hyprland/workspaces"
           "hyprland/window"
+          "custom/hyprpicker"
+          "custom/notification"
         ];
 
         modules-center = [
-          "clock"
+          "custom/previous"
+          "mpris"
+          "custom/next"
         ];
 
         modules-right = [
@@ -23,28 +28,53 @@
           "battery"
           "backlight"
           "tray"
+          "custom/power"
+          "clock"
         ];
-
-        "hyprland/workspaces" = {
-          format = "{icon}";
-          tooltip = false;
-          format-icons = {
-            "1" = "一";
-            "2" = "二";
-            "3" = "三";
-            "4" = "四";
-            "5" = "五";
-            "6" = "六";
-            "7" = "七";
-            "8" = "八";
-            "9" = "九";
-            "10" = "十";
-          };
-        };
 
         "hyprland/window" = {
           format = "{}";
           separate-outputs = true;
+        };
+
+        pulseaudio = {
+          tooltip = true;
+          tooltip-format = "Volume: {volume}%\nDevice: {desc}";
+          scroll-step = 5;
+          format = "{icon}     {volume}%";
+          format-muted = "muted";
+          format-bluetooth = "◈ {volume}% (BT)";
+          format-bluetooth-muted = "◇ Muted (BT)";
+          on-click = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
+          on-click-right = "pavucontrol";
+          format-icons = {
+            default = ["" "" ""];
+          };
+        };
+
+        backlight = {
+          device = "intel_backlight";
+          format = "{icon}  {percent}%";
+          format-icons = ["" ""];
+        };
+
+        battery = {
+          bat = "BAT1";
+          interval = 1;
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          format = "{icon}     {capacity}%";
+          format-icons = ["" "" "" "" ""];
+          max-length = 25;
+        };
+
+        "custom/power" = {
+          format = "⏻ ";
+          tooltip = false;
+          on-click = "wlogout";
+          on-click-right = "killall rofi";
         };
 
         clock = {
@@ -72,53 +102,529 @@
           format-alt = "{:%Y-%m-%d}";
         };
 
-        pulseaudio = {
-          tooltip = true;
-          tooltip-format = "Volume: {volume}%\nDevice: {desc}";
-          scroll-step = 5;
-          format = "{icon}     {volume}%";
-          format-muted = "muted";
-          format-bluetooth = "◈ {volume}% (BT)";
-          format-bluetooth-muted = "◇ Muted (BT)";
-          on-click-right = "pavucontrol";
+        "hyprland/workspaces" = {
+          format = "{icon}";
+          tooltip = false;
           format-icons = {
-            default = ["" "" ""];
+            "1" = "一";
+            "2" = "二";
+            "3" = "三";
+            "4" = "四";
+            "5" = "五";
+            "6" = "六";
+            "7" = "七";
+            "8" = "八";
+            "9" = "九";
+            "10" = "十";
           };
-        };
-
-        backlight = {
-          device = "intel_backlight";
-          format = "{icon}  {percent}%";
-          format-icons = ["" ""];
-        };
-
-        battery = {
-          interval = 1;
-          states = {
-            warning = 30;
-            critical = 15;
-          };
-          format = "{icon}     {capacity}%";
-          format-icons = ["" "" "" "" ""];
-          max-length = 25;
         };
 
         tray = {
           icon-size = 21;
           spacing = 10;
         };
+
+        "custom/notification" = {
+          tooltip = false;
+          format = "{icon}";
+          format-icons = {
+            notification = "󰅸";
+            none = "󰂜";
+            dnd-notification = "󰅸";
+            dnd-none = "󱏨";
+            inhibited-notification = "󰅸";
+            inhibited-none = "󰂜";
+            dnd-inhibited-notification = "󰅸";
+            dnd-inhibited-none = "󱏨";
+          };
+          return-type = "json";
+          exec-if = "which swaync-client";
+          exec = "swaync-client -swb";
+          on-click-right = "swaync-client -d -sw";
+          on-click = "swaync-client -t -sw";
+          escape = true;
+        };
+
+        "custom/hyprpicker" = {
+          format = "";
+          tooltip = false;
+          on-click = "hyprpicker -a";
+          on-click-right = "killall hyprpicker";
+        };
+
+        "custom/previous" = {
+          format = "◄";
+          on-click = "playerctl previous";
+          on-click-middle = "playerctl position 0";
+          tooltip = true;
+          tooltip-format = "Previous Track";
+        };
+
+        mpris = {
+          format = "♫ {artist} - {title}";
+          format-paused = "◊ {artist} - {title}";
+          format-stopped = "□ No media";
+          format-disconnected = "⊠ Disconnected";
+          max-length = 40;
+          tooltip-format = "▣ {album}\n▣ {title} ({length})";
+          on-click = "playerctl play-pause";
+          on-click-middle = "playerctl stop";
+          on-click-right = "kitty --title floating ncmpcpp";
+          on-scroll-up = "playerctl next";
+          on-scroll-down = "playerctl previous";
+          interval = 1;
+        };
+
+        "custom/next" = {
+          format = "►";
+          on-click = "playerctl next";
+          on-click-middle = "playerctl shuffle toggle";
+          tooltip = true;
+          tooltip-format = "Next Track";
+        };
       };
     };
 
     style = ''
       * {
+        border: none;
+        border-radius: 10px;
         font-family: "Cinzel Decorative", Georgia, Arial;
-        font-size: 13px;
+        font-size: 12px;
+        min-height: 0;
+        transition-duration: 0.3s;
       }
 
-    window#waybar {
+      window#waybar {
         background: transparent;
         margin: 5px 5px 0 5px;
+      }
+
+      window#waybar.hidden {
+        opacity: 0.4;
+      }
+
+      /* Module common styling */
+      #workspaces,
+      #pulseaudio,
+      #battery,
+      #backlight,
+      #tray,
+      #clock,
+      #custom-power,
+      #network,
+      #window,
+      #custom-media,
+      #custom-hyprpicker,
+      #bluetooth {
+        background-color: rgba(30, 30, 46, 0.95);
+        padding: 0 12px;
+        margin: 0 4px;
+        border-radius: 10px;
+        min-height: 20px;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+        text-shadow: 0 0 1px currentColor;
+      }
+
+      #workspaces:hover,
+      #pulseaudio:hover,
+      #battery:hover,
+      #backlight:hover,
+      #tray:hover,
+      #clock:hover,
+      #custom-power:hover,
+      #network:hover,
+      #window:hover,
+      #custom-media:hover,
+      #custom-hyprpicker:hover,
+      #bluetooth:hover {
+        background-color: rgba(205, 214, 244, 0.15);
+        box-shadow: 0 0 5px currentColor;
+      }
+
+      /* Window title styling */
+      #window {
+        color: #bac2de;
+        font-style: italic;
+        background-color: rgba(30, 30, 46, 0.95);
+        padding: 0 15px;
+        margin: 0 4px;
+        border-radius: 10px;
+        font-weight: bold;
+        min-width: 100px;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+        text-shadow: 0 0 1px currentColor;
+      }
+
+      #window.empty {
+        background-color: transparent;
+      }
+
+      #window.focused {
+        border-bottom: 2px solid #89b4fa;
+        box-shadow: 0 0 5px #89b4fa;
+      }
+
+      /* Workspaces styling */
+      #workspaces {
+        background-color: rgba(30, 30, 46, 0.95);
+        border-radius: 10px;
+        margin-left: 5px;
+        padding: 0 5px;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+      }
+
+      #workspaces button {
+        padding: 0 8px;
+        background-color: transparent;
+        color: #cba6f7;
+        border-radius: 10px;
+        margin: 2px;
+        font-size: 13px;
+        text-shadow: 0 0 1px currentColor;
+      }
+
+      #workspaces button:hover {
+        background: rgba(137, 180, 250, 0.3);
+        color: #cdd6f4;
+        box-shadow: 0 0 5px #89b4fa;
+      }
+
+      #workspaces button.active {
+        background-color: rgba(203, 166, 247, 0.5);
+        color: #cdd6f4;
+        border: 2px solid #cba6f7;
+        box-shadow: 0 0 5px #cba6f7;
+      }
+
+      #workspaces button.urgent {
+        background-color: transparent;
+        color: #f38ba8;
+        border: 1px solid #f38ba8;
+        box-shadow: 0 0 5px #f38ba8;
+        animation: urgent-glow 1.5s infinite;
+      }
+
+      @keyframes urgent-glow {
+        0% {
+          box-shadow: 0 0 2px #f38ba8;
+          border-color: #f38ba8;
+        }
+        25% {
+          box-shadow: 0 0 8px #f38ba8;
+          border-color: #f38ba8;
+        }
+        50% {
+          box-shadow: 0 0 12px #f38ba8;
+          border-color: #f38ba8;
+          background-color: rgba(243, 139, 168, 0.1);
+        }
+        75% {
+          box-shadow: 0 0 8px #f38ba8;
+          border-color: #f38ba8;
+        }
+        100% {
+          box-shadow: 0 0 2px #f38ba8;
+          border-color: #f38ba8;
+        }
+      }
+
+      /* Power button */
+      #custom-power {
+        color: #f38ba8;
+        font-size: 16px;
+        margin-right: 8px;
+        padding: 0 12px;
+        text-shadow: 0 0 1px currentColor;
+      }
+
+      #custom-power:hover {
+        background-color: rgba(243, 139, 168, 0.15);
+        box-shadow: 0 0 5px #f38ba8;
+      }
+
+      /* Clock */
+      #clock {
+        color: #94e2d5;
+        font-weight: bold;
+        padding: 0 15px;
+        text-shadow: 0 0 1px currentColor;
+      }
+
+      /* System modules */
+      #pulseaudio {
+        color: #f9e2af;
+        padding: 0 12px;
+        text-shadow: 0 0 1px currentColor;
+      }
+
+      #pulseaudio.muted {
+        color: #6c7086;
+      }
+
+      #battery {
+        color: #a6e3a1;
+        padding: 0 12px;
+        text-shadow: 0 0 1px currentColor;
+      }
+
+      #battery.charging {
+        color: #a6e3a1;
+        box-shadow: 0 0 5px #a6e3a1;
+      }
+
+      #battery.warning:not(.charging) {
+        color: #f9e2af;
+        box-shadow: 0 0 5px #f9e2af;
+      }
+
+      #battery.critical:not(.charging) {
+        color: #f38ba8;
+        box-shadow: 0 0 5px #f38ba8;
+        animation-name: blink;
+        animation-duration: 0.5s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+
+      @keyframes blink {
+        to {
+          color: #cdd6f4;
+          background-color: #f38ba8;
+          box-shadow: 0 0 8px #f38ba8;
+        }
+      }
+
+      #backlight {
+        color: #89b4fa;
+        padding: 0 12px;
+        text-shadow: 0 0 1px currentColor;
+      }
+
+      #network {
+        color: #cba6f7;
+        padding: 0 12px;
+        text-shadow: 0 0 1px currentColor;
+      }
+
+      #network.disconnected {
+        color: #f38ba8;
+        box-shadow: 0 0 5px #f38ba8;
+      }
+
+      #tray {
+        padding: 0 12px;
+      }
+
+      #tray > .passive {
+        -gtk-icon-effect: dim;
+      }
+
+      #tray > .needs-attention {
+        -gtk-icon-effect: highlight;
+        color: #f38ba8;
+        box-shadow: 0 0 5px #f38ba8;
+      }
+
+      /* Media player */
+      #custom-media {
+        background-color: rgba(30, 30, 46, 0.95);
+        color: #94e2d5;
+        border-radius: 10px;
+        margin: 0 4px;
+        padding: 0 15px;
+        min-width: 100px;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+        text-shadow: 0 0 1px currentColor;
+      }
+
+      #custom-media.custom-spotify {
+        color: #a6e3a1;
+        box-shadow: 0 0 5px #a6e3a1;
+      }
+
+      #custom-media.custom-firefox {
+        color: #fab387;
+        box-shadow: 0 0 5px #fab387;
+      }
+
+      #custom-media.custom-chromium {
+        color: #89b4fa;
+        box-shadow: 0 0 5px #89b4fa;
+      }
+
+      #custom-media.custom-vlc {
+        color: #cba6f7;
+        box-shadow: 0 0 5px #cba6f7;
+      }
+
+      /* Notification module styling */
+      #custom-notification {
+        background-color: rgba(30, 30, 46, 0.95);
+        padding: 0 12px;
+        margin: 0 4px;
+        border-radius: 10px;
+        color: #74c7ec;
+        font-size: 16px;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+        text-shadow: 0 0 1px currentColor;
+      }
+
+      #custom-notification:hover {
+        background-color: rgba(205, 214, 244, 0.15);
+        box-shadow: 0 0 5px currentColor;
+      }
+
+      /* Different states of the notification icon */
+      #custom-notification.notification {
+        color: #f38ba8;
+        box-shadow: 0 0 5px #f38ba8;
+      }
+
+      #custom-notification.dnd-notification {
+        color: #f38ba8;
+        box-shadow: 0 0 5px #f38ba8;
+      }
+
+      #custom-notification.inhibited-notification {
+        color: #f38ba8;
+        box-shadow: 0 0 5px #f38ba8;
+      }
+
+      #custom-notification.dnd-inhibited-notification {
+        color: #f38ba8;
+        box-shadow: 0 0 5px #f38ba8;
+      }
+
+      #custom-notification.dnd-none,
+      #custom-notification.dnd-inhibited-none {
+        color: #6c7086;
+      }
+
+      /* Hyprpicker module */
+      #custom-hyprpicker {
+        color: #f5c2e7;
+        font-size: 16px;
+        padding: 0 12px;
+        text-shadow: 0 0 1px currentColor;
+      }
+
+      #custom-hyprpicker:hover {
+        background-color: rgba(245, 194, 231, 0.15);
+        box-shadow: 0 0 5px #f5c2e7;
+      }
+
+      /* Bluetooth module */
+      #bluetooth {
+        color: #b4befe;
+        font-size: 18px;
+        margin-left: 8px;
+        padding: 0 12px;
+        text-shadow: 0 0 1px currentColor;
+      }
+
+      #bluetooth.off {
+        color: #6c7086;
+      }
+
+      #bluetooth.connected {
+        color: #a6e3a1;
+        box-shadow: 0 0 5px #a6e3a1;
+      }
+
+      #bluetooth.discovering {
+        color: #89b4fa;
+        box-shadow: 0 0 5px #89b4fa;
+        animation: bluetooth-pulse 1.5s infinite;
+      }
+
+      @keyframes bluetooth-pulse {
+        0% {
+          opacity: 1;
+          box-shadow: 0 0 2px #89b4fa;
+        }
+        50% {
+          opacity: 0.5;
+          box-shadow: 0 0 8px #89b4fa;
+        }
+        100% {
+          opacity: 1;
+          box-shadow: 0 0 2px #89b4fa;
+        }
+      }
+
+      /* Music player controls */
+      #custom-previous,
+      #custom-next,
+      #mpris {
+        background-color: rgba(30, 30, 46, 0.95);
+        margin: 0 2px;
+        border-radius: 10px;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      #custom-previous,
+      #custom-next {
+        color: #89b4fa;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 0 10px;
+        text-shadow: 0 0 5px #89b4fa, 0 0 8px #89b4fa;
+        animation: text-neon-pulse 1.5s infinite alternate;
+      }
+
+      #custom-previous:hover,
+      #custom-next:hover {
+        background-color: rgba(137, 180, 250, 0.15);
+        text-shadow: 0 0 8px #89b4fa, 0 0 12px #89b4fa, 0 0 16px #89b4fa;
+      }
+
+      #mpris {
+        color: #94e2d5;
+        min-width: 100px;
+        padding: 0 12px;
+        font-style: italic;
+      }
+
+      #mpris.playing {
+        border-bottom: 2px solid #a6e3a1;
+        text-shadow: 0 0 5px #a6e3a1, 0 0 8px #a6e3a1;
+        animation: mpris-text-pulse 2s infinite alternate;
+      }
+
+      #mpris.paused {
+        border-bottom: 2px solid #f9e2af;
+        color: rgba(148, 226, 213, 0.7);
+        text-shadow: 0 0 3px #f9e2af;
+      }
+
+      #mpris.stopped {
+        color: #6c7086;
+      }
+
+      #mpris:hover {
+        background-color: rgba(148, 226, 213, 0.15);
+        text-shadow: 0 0 8px #94e2d5, 0 0 12px #94e2d5;
+      }
+
+      @keyframes text-neon-pulse {
+        from {
+          text-shadow: 0 0 2px #89b4fa, 0 0 4px #89b4fa;
+        }
+        to {
+          text-shadow: 0 0 5px #89b4fa, 0 0 10px #89b4fa, 0 0 15px #89b4fa;
+        }
+      }
+
+      @keyframes mpris-text-pulse {
+        from {
+          text-shadow: 0 0 2px #a6e3a1, 0 0 4px #a6e3a1;
+        }
+        to {
+          text-shadow: 0 0 5px #a6e3a1, 0 0 10px #a6e3a1, 0 0 15px #a6e3a1;
+        }
       }
     '';
   };

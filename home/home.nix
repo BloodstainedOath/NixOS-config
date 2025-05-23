@@ -15,7 +15,6 @@
   home.packages = with pkgs; [
     sweet
     firefox-devedition
-    vscodium
     vlc
     eog
     nautilus
@@ -30,7 +29,8 @@
     imagemagick
     rofi
     wl-clipboard
-    cliphist 
+    cliphist
+    playerctl
   ];
 
   home.file = {

@@ -68,6 +68,7 @@
    xdg-desktop-portal-hyprland
    libnotify
    appimage-run
+   vscodium
    brightnessctl
  ];
   environment.variables = {
