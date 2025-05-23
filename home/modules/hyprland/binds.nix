@@ -112,6 +112,8 @@
 
       "$mainMod SHIFT, W, exec, waypaper --random"
       "$mainMod CTRL, W, exec, waypaper"
+
+      "$mainMod SHIFT, B, exec, waybar"
     ];
 
     #######################

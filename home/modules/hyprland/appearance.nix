@@ -6,8 +6,8 @@
       gaps_in = 5;
       gaps_out = 10;
       border_size = 2;
-      "col.active_border" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
-      "col.inactive_border" = "rgba(6c7086ff)";
+      "col.active_border" = "$color2 $color4";
+      "col.inactive_border" = "$color7";
       resize_on_border = true;
       hover_icon_on_border = true;
       layout = "master";

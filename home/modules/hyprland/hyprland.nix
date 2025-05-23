@@ -22,6 +22,12 @@
       cursor = {
         no_hardware_cursors = true;
       };
+
+      #############
+      ## Wallust ##
+      #############
+
+      source = "$HOME/.config/hypr/colors.conf";
     };
   };
 }

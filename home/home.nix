@@ -5,6 +5,8 @@
     ./modules/hyprland/hyprland.nix
     ./modules/kitty/kitty.nix
     ./modules/waybar/waybar.nix
+    ./modules/wallust/wallust.nix
+    ./modules/rofi/rofi.nix
   ];
 
   home.username = "hunter";
@@ -26,6 +28,7 @@
     pavucontrol
     swaynotificationcenter
     wallust
+    imagemagick
   ];
 
   home.file = {

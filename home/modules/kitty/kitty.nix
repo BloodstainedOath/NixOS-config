@@ -31,7 +31,7 @@
 
     extraConfig = ''
       # You can include a custom theme here if you want
-      # include ~/.cache/wal/colors-kitty.conf
+      include ~/.config/kitty/colors.conf
     '';
   };
 }
