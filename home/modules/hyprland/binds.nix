@@ -6,7 +6,7 @@
     "$mainMod" = "SUPER";
     "$terminal" = "kitty";
     "$filemanager" = "nautilus";
-    "$menu" = "wofi --show drun";
+    "$menu" = "$HOME/.config/rofi/launcher.sh";
     "$browser" = "firefox-devedition";
     "$codeEditor" = "codium";
 
@@ -112,8 +112,6 @@
 
       "$mainMod SHIFT, W, exec, waypaper --random"
       "$mainMod CTRL, W, exec, waypaper"
-
-      "$mainMod SHIFT, B, exec, waybar"
     ];
 
     #######################
