@@ -21,7 +21,6 @@
     nautilus
     waypaper
     swww
-    rofi
     wofi
     waybar
     hyprshot
@@ -29,6 +28,10 @@
     swaynotificationcenter
     wallust
     imagemagick
+    rofi
+    wl-clipboard
+    cliphist
+    rofimoji   
   ];
 
   home.file = {

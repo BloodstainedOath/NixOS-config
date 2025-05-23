@@ -1,471 +1,202 @@
 { config, pkgs, ... }:
 
 {
-  programs.rofi = {
-    enable = true;
-    package = pkgs.rofi-wayland; # Use wayland version for Hyprland
-    
-    # Terminal for rofi to use
-    terminal = "${pkgs.kitty}/bin/kitty";
-    
-    # Basic configuration
-    extraConfig = {
-      # Display settings
-      show-icons = true;
-      icon-theme = "BeautySolar";
-      display-drun = " Apps";
-      display-run = " Run";
-      display-window = " Windows";
-      display-ssh = " SSH";
-      display-combi = " All";
-      
-      # Behavior
-      drun-display-format = "{name}";
-      window-format = "{w} {c} {t}";
-      matching = "fuzzy";
-      sort = true;
-      sorting-method = "fzf";
-      case-sensitive = false;
-      cycle = true;
-      
-      # Layout
-      columns = 1;
-      lines = 10;
-      fixed-num-lines = false;
-      
-      # Keybindings
-      kb-cancel = "Escape,Control+c";
-      kb-accept-entry = "Return,KP_Enter";
-      kb-remove-to-eol = "Control+k";
-      kb-mode-next = "Tab";
-      kb-mode-previous = "ISO_Left_Tab";
-      kb-row-up = "Up,Control+p";
-      kb-row-down = "Down,Control+n";
-    };
-  };
+  # Create the main rofi config file directly without using programs.rofi
+  home.file.".config/rofi/config.rasi".text = ''
+    configuration {
+        modi:                       "drun,run";
+        show-icons:                 true;
+        display-drun:               "APPS";
+        display-run:                "RUN";
+        display-emoji:              "EMOJI";
+        display-window:             "WINDOW";
+        drun-display-format:        "{name}";
+        window-format:              "{w} · {c} · {t}";
+    }
 
-  # Rofi theme configuration
-  home.file = {
-    # Main rofi configuration directory
-    ".config/rofi/config.rasi".text = ''
-      configuration {
-        @import "colors.rasi"
-        
-        font: "JetBrains Mono 12";
-        modi: "drun,run,window,ssh,combi";
-        combi-modi: "drun,run";
-        
-        /* Window settings */
-        width: 600;
-        
-        /* Behavior */
-        show-icons: true;
-        terminal: "kitty";
-        ssh-client: "ssh";
-        ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";
-        run-command: "{cmd}";
-        run-list-command: "";
-        run-shell-command: "{terminal} -e {cmd}";
-        
-        /* Matching */
-        matching: "fuzzy";
-        case-sensitive: false;
-        
-        /* History and Sorting */
-        disable-history: false;
-        sort: true;
-        sorting-method: "fzf";
-        
-        /* Display */
-        drun-display-format: "{name}";
-        window-format: "{w} {c} {t}";
-      }
-    '';
+    @theme "~/.config/rofi/colors.rasi"
 
-    # Custom theme that uses wallust colors
-    ".config/rofi/theme.rasi".text = ''
-      @import "colors.rasi"
+    * {
+        font:                            "Cinzel 16";
+    }
 
-      * {
-        background-color: transparent;
-        text-color: @foreground;
-        
-        margin: 0;
-        padding: 0;
-        spacing: 0;
-      }
+    entry {
+        placeholder: "Search";
+    }
 
-      window {
-        location: center;
-        width: 600px;
-        border-radius: 12px;
-        background-color: @background;
-        border: 2px solid @bordercolor;
-        padding: 10px;
-      }
+    mainbox {
+        enabled:                     true;
+        spacing:                     0px;
+        background-color:            transparent;
+        orientation:                 horizontal;
+        children:                    [ "imagebox", "listbox" ];
+    }
 
-      mainbox {
-        padding: 10px;
-        spacing: 10px;
-      }
+    imagebox {
+        padding:                     20px;
+        background-color:            transparent;
+        background-image:            url("~/.config/rofi/images/rofi-bg.png", both);
+        background-position:         center;
+        background-repeat:           false;
+        orientation:                 vertical;
+        children:                    [ "inputbar", "dummy", "mode-switcher" ];
+    }
 
-      inputbar {
-        background-color: @selected-background;
-        border-radius: 8px;
-        padding: 12px 16px;
-        spacing: 8px;
-        children: [prompt, textbox-prompt-colon, entry];
-      }
+    listbox {
+        spacing:                     20px;
+        padding:                     20px;
+        background-color:            transparent;
+        orientation:                 vertical;
+        children:                    [ "message", "listview" ];
+    }
 
-      prompt {
-        text-color: @active-background;
-        font: "JetBrains Mono Bold 12";
-      }
+    dummy {
+        background-color:            transparent;
+    }
 
-      textbox-prompt-colon {
-        expand: false;
-        str: "";
-        text-color: @foreground;
-      }
+    /*****----- Inputbar -----*****/
+    inputbar {
+        enabled:                     true;
+        spacing:                     10px;
+        padding:                     15px;
+        border-radius:               10px;
+        children:                    [ "textbox-prompt-colon", "entry" ];
+    }
 
-      entry {
-        placeholder: "Search...";
-        placeholder-color: mix(@foreground, @background, 50%);
-        cursor: pointer;
-      }
+    textbox-prompt-colon {
+        enabled:                     true;
+        expand:                      false;
+        str:                         "";
+        background-color:            inherit;
+        text-color:                  inherit;
+    }
 
-      listview {
-        lines: 10;
-        columns: 1;
-        fixed-height: false;
-        spacing: 4px;
-        scrollbar: true;
-        padding: 8px 0px;
-      }
+    entry {
+        enabled:                     true;
+        background-color:            inherit;
+        text-color:                  inherit;
+        cursor:                      text;
+        placeholder:                 "Search";
+        placeholder-color:           inherit;
+    }
 
-      scrollbar {
-        handle-width: 6px;
-        handle-color: @selected-background;
-        background-color: @background;
-        border-radius: 3px;
-        margin: 0px 4px;
-      }
+    mode-switcher{
+        enabled:                     true;
+        spacing:                     20px;
+        background-color:            transparent;
+        text-color:                  @foreground;
+    }
 
-      element {
-        padding: 10px 12px;
-        border-radius: 8px;
-        spacing: 10px;
-        orientation: horizontal;
-        children: [element-icon, element-text];
-      }
+    button {
+        padding:                     15px;
+        border-radius:               10px;
+        background-color:            @background;
+        text-color:                  inherit;
+        cursor:                      pointer;
+    }
 
-      element normal.normal {
-        background-color: transparent;
-        text-color: @foreground;
-      }
+    button selected {
+        background-color:            @active-background;
+        text-color:                  @foreground;
+    }
 
-      element normal.urgent {
-        background-color: @urgent-background;
-        text-color: @foreground;
-      }
+    listview {
+        enabled:                     true;
+        columns:                     1;
+        lines:                       8;
+        cycle:                       true;
+        dynamic:                     true;
+        scrollbar:                   false;
+        layout:                      vertical;
+        reverse:                     false;
+        fixed-height:                true;
+        fixed-columns:               true;
+        spacing:                     10px;
+        background-color:            transparent;
+        text-color:                  @foreground;
+        cursor:                      "default";
+    }
 
-      element normal.active {
-        background-color: @active-background;
-        text-color: @background;
-      }
+    element {
+        enabled:                     true;
+        spacing:                     15px;
+        padding:                     8px;
+        border-radius:               10px;
+        background-color:            transparent;
+        text-color:                  @foreground;
+        cursor:                      pointer;
+    }
 
-      element selected.normal {
-        background-color: @selected-background;
-        text-color: @foreground;
-        border: 1px solid @active-background;
-      }
+    element normal.normal {
+        background-color:            inherit;
+        text-color:                  inherit;
+    }
 
-      element selected.urgent {
-        background-color: @selected-urgent-background;
-        text-color: @foreground;
-      }
+    element normal.urgent {
+        background-color:            @background;
+        text-color:                  @foreground;
+    }
 
-      element selected.active {
-        background-color: @selected-active-background;
-        text-color: @background;
-      }
+    element selected.urgent {
+        background-color:            @background;
+        text-color:                  @foreground;
+    }
 
-      element-icon {
-        size: 24px;
-        vertical-align: 0.5;
-      }
+    element selected.active {
+        background-color:            @background;
+        text-color:                  @foreground;
+    }
 
-      element-text {
-        vertical-align: 0.5;
-        highlight: bold underline;
-      }
+    element-icon {
+        background-color:            transparent;
+        text-color:                  inherit;
+        size:                        32px;
+        cursor:                      inherit;
+    }
 
-      message {
-        padding: 12px;
-        border-radius: 8px;
-        background-color: @selected-background;
-      }
+    element-text {
+        background-color:            transparent;
+        text-color:                  inherit;
+        cursor:                      inherit;
+        vertical-align:              0.5;
+        horizontal-align:            0.0;
+    }
 
-      textbox {
-        padding: 8px 12px;
-        text-color: @foreground;
-      }
+    message {
+        background-color:            transparent;
+    }
 
-      mode-switcher {
-        spacing: 0;
-        margin: 10px 0px 0px 0px;
-      }
+    textbox {
+        padding:                     15px;
+        border-radius:               10px;
+        background-color:            @background;
+        text-color:                  @foreground;
+        vertical-align:              0.5;
+        horizontal-align:            0.0;
+    }
 
-      button {
-        padding: 10px 16px;
-        border-radius: 6px;
-        background-color: @selected-background;
-        text-color: @foreground;
-        horizontal-align: 0.5;
-      }
-
-      button selected {
-        background-color: @active-background;
-        text-color: @background;
-      }
-
-      /* Error and loading states */
-      error-message {
-        padding: 12px;
-        border-radius: 8px;
-        background-color: @urgent-background;
-        text-color: @foreground;
-      }
-    '';
-
-    # Power menu theme
-    ".config/rofi/powermenu.rasi".text = ''
-      @import "colors.rasi"
-
-      * {
-        background-color: transparent;
-        text-color: @foreground;
-        font: "JetBrains Mono 14";
-        margin: 0;
-        padding: 0;
-        spacing: 0;
-      }
-
-      window {
-        location: center;
-        anchor: center;
-        width: 400px;
-        background-color: @background;
-        border: 2px solid @bordercolor;
-        border-radius: 12px;
-        padding: 20px;
-      }
-
-      mainbox {
-        spacing: 20px;
-        children: [message, listview];
-      }
-
-      message {
-        background-color: transparent;
-        text-color: @foreground;
-        horizontal-align: 0.5;
-      }
-
-      textbox {
-        text-color: @foreground;
-        font: "JetBrains Mono Bold 16";
-        horizontal-align: 0.5;
-      }
-
-      listview {
-        columns: 4;
-        lines: 1;
-        spacing: 15px;
-        cycle: true;
-        dynamic: true;
-        layout: horizontal;
-      }
-
-      element {
-        background-color: @selected-background;
-        text-color: @foreground;
-        border-radius: 10px;
-        padding: 25px 10px;
-        horizontal-align: 0.5;
-        vertical-align: 0.5;
-      }
-
-      element selected {
-        background-color: @active-background;
-        text-color: @background;
-        border: 2px solid @foreground;
-      }
-
-      element-text {
-        font: "JetBrains Mono Bold 12";
-        horizontal-align: 0.5;
-        vertical-align: 0.5;
-      }
-    '';
-
-    # Network menu theme
-    ".config/rofi/networkmenu.rasi".text = ''
-      @import "colors.rasi"
-
-      * {
-        background-color: transparent;
-        text-color: @foreground;
-        margin: 0;
-        padding: 0;
-        spacing: 0;
-      }
-
-      window {
-        location: northeast;
-        anchor: northeast;
-        x-offset: -20px;
-        y-offset: 60px;
-        width: 350px;
-        background-color: @background;
-        border: 2px solid @bordercolor;
-        border-radius: 8px;
-        padding: 10px;
-      }
-
-      mainbox {
-        spacing: 10px;
-      }
-
-      inputbar {
-        background-color: @selected-background;
-        border-radius: 6px;
-        padding: 8px 12px;
-        children: [prompt, entry];
-        spacing: 8px;
-      }
-
-      prompt {
-        text-color: @active-background;
-        font: "JetBrains Mono Bold 10";
-      }
-
-      entry {
-        placeholder: "Search networks...";
-        font: "JetBrains Mono 10";
-      }
-
-      listview {
-        lines: 8;
-        scrollbar: false;
-        spacing: 2px;
-      }
-
-      element {
-        padding: 8px 12px;
-        border-radius: 4px;
-        orientation: horizontal;
-        children: [element-icon, element-text];
-        spacing: 8px;
-      }
-
-      element selected {
-        background-color: @selected-background;
-        text-color: @foreground;
-      }
-
-      element-icon {
-        size: 16px;
-      }
-
-      element-text {
-        font: "JetBrains Mono 10";
-      }
-    '';
-  };
-
-  # Rofi scripts for additional functionality
-  home.file = {
-    # Power menu script
-    ".local/bin/rofi-powermenu".text = ''
-      #!/bin/bash
-      
-      # Power menu options
-      shutdown=" Shutdown"
-      reboot=" Restart"
-      lock=" Lock"
-      suspend=" Sleep"
-      logout=" Logout"
-      
-      # Show menu
-      chosen=$(echo -e "$shutdown\n$reboot\n$lock\n$suspend\n$logout" | rofi -dmenu -theme ~/.config/rofi/powermenu.rasi -p "Power Menu")
-      
-      case $chosen in
-          $shutdown)
-              systemctl poweroff
-              ;;
-          $reboot)
-              systemctl reboot
-              ;;
-          $lock)
-              hyprlock
-              ;;
-          $suspend)
-              systemctl suspend
-              ;;
-          $logout)
-              hyprctl dispatch exit
-              ;;
-      esac
-    '';
-
-    # Clipboard manager script
-    ".local/bin/rofi-clipboard".text = ''
-      #!/bin/bash
-      
-      # Get clipboard history (requires wl-clipboard and cliphist)
-      if command -v cliphist &> /dev/null; then
-          cliphist list | rofi -dmenu -theme ~/.config/rofi/theme.rasi -p "Clipboard" | cliphist decode | wl-copy
-      else
-          echo "cliphist not found. Install it for clipboard history."
-          exit 1
-      fi
-    '';
-
-    # Window switcher script
-    ".local/bin/rofi-windows".text = ''
-      #!/bin/bash
-      
-      # Enhanced window switcher
-      rofi -show window -theme ~/.config/rofi/theme.rasi
-    '';
-
-    # File browser script
-    ".local/bin/rofi-files".text = ''
-      #!/bin/bash
-      
-      # Simple file browser
-      cd "$HOME"
-      
-      while true; do
-          choice=$(find . -maxdepth 1 -type d -not -path '*/\.*' | sed 's|^\./||' | sort | rofi -dmenu -theme ~/.config/rofi/theme.rasi -p "$(pwd)")
-          
-          if [ -z "$choice" ]; then
-              break
-          elif [ "$choice" = ".." ]; then
-              cd ..
-          elif [ -d "$choice" ]; then
-              cd "$choice"
-          fi
-      done
-    '';
-  };
-
-  # Make scripts executable
-  home.activation.makeRofiScriptsExecutable = config.lib.dag.entryAfter ["writeBoundary"] ''
-    chmod +x ~/.local/bin/rofi-powermenu
-    chmod +x ~/.local/bin/rofi-clipboard  
-    chmod +x ~/.local/bin/rofi-windows
-    chmod +x ~/.local/bin/rofi-files
+    error-message {
+        padding:                     15px;
+        border-radius:               20px;
+        background-color:            @background;
+        text-color:                  @foreground;
+    }
   '';
+
+  # Create the rofi images directory
+  home.file.".config/rofi/images/.keep".text = "";
+  
+  # Create a launcher script
+  home.file.".config/rofi/launcher.sh" = {
+    text = ''
+      #!/usr/bin/env bash
+      dir="$HOME/.config/rofi"
+      
+      ## Run
+      rofi \
+          -show drun \
+          -theme $dir/config.rasi
+    '';
+    executable = true;
+  };
 }
