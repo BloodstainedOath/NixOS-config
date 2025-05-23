@@ -17,18 +17,21 @@ let
 
 in
 {
-  boot.loader = {
-    systemd-boot.enable = false;
+  boot = {
+    kernelParams = [ "quiet" ];
 
-    grub = {
-      enable = true;
-      efiSupport = true;
-      device = "nodev";
+    loader = {
 
-      # ✨ Pick your favorite theme here
-      theme = raidenTheme;  # Change to sekiroTheme, wutheringTheme, etc.
+      grub = {
+        enable = true;
+        efiSupport = true;
+        device = "nodev";
+
+        # ✨ Pick your favorite theme here
+        theme = raidenTheme;
+      };
+
+      efi.canTouchEfiVariables = true;
     };
-
-    efi.canTouchEfiVariables = true;
   };
 }

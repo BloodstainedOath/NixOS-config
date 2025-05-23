@@ -4,6 +4,7 @@
   imports = [
     ./modules/hyprland/hyprland.nix
     ./modules/kitty/kitty.nix
+    ./modules/waybar/waybar.nix
   ];
 
   home.username = "hunter";
@@ -22,6 +23,9 @@
     wofi
     waybar
     hyprshot
+    pavucontrol
+    swaynotificationcenter
+    wallust
   ];
 
   home.file = {
