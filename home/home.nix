@@ -30,8 +30,7 @@
     imagemagick
     rofi
     wl-clipboard
-    cliphist
-    rofimoji   
+    cliphist 
   ];
 
   home.file = {
