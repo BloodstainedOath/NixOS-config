@@ -112,6 +112,18 @@
 
       "$mainMod SHIFT, W, exec, waypaper --random"
       "$mainMod CTRL, W, exec, waypaper"
+
+
+      ##############################
+      ######## Custom Apps #########
+      ##############################
+
+      "$mainMod, H, exec, appimage-run /home/hunter/.config/hypr/scripts/Heroic.AppImage"
+      "$mainMod, U, exec, upscayl"
+      "$mainMod, Y, exec, youtube-music"
+
+      # Clipboard
+      "$mainMod, V, exec, sh -c 'cliphist list | wofi -dmenu | cliphist decode | wl-copy'"
     ];
 
     #######################

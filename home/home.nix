@@ -32,6 +32,10 @@
     wl-clipboard
     cliphist
     playerctl
+    gamemode
+    upscayl
+    youtube-music
+    gamescope
   ];
 
   home.file = {
