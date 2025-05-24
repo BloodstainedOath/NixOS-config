@@ -21,6 +21,9 @@
       inputs.home-manager.nixosModules.home-manager
     ];
 
+    # Allow unfree packages
+    nixpkgs.config.allowUnfree = true;
+
     home-manager = {
       extraSpecialArgs = { inherit inputs; };
       users = {

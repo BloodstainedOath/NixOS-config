@@ -6,8 +6,6 @@
   # Enable Zsh shell
   programs.zsh.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
-
   services.gvfs.enable = true;
 
   # Allow Flake

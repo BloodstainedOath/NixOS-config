@@ -118,12 +118,15 @@
       ######## Custom Apps #########
       ##############################
 
-      "$mainMod, H, exec, appimage-run /home/hunter/.config/hypr/scripts/Heroic.AppImage"
+      "$mainMod, H, exec, heroic"
       "$mainMod, U, exec, upscayl"
       "$mainMod, Y, exec, youtube-music"
 
       # Clipboard
       "$mainMod, V, exec, sh -c 'cliphist list | wofi -dmenu | cliphist decode | wl-copy'"
+
+      # Launching waybar and swaync after wallust
+      "$mainMod SHIFT, B, exec, $HOME/.config/waypaper/bar.sh"
     ];
 
     #######################

@@ -8,6 +8,7 @@
     ./modules/wallust/wallust.nix
     ./modules/rofi/rofi.nix
     ./modules/swaync/swaync.nix
+    ./modules/wlogout/wlogout.nix
   ];
 
   home.username = "hunter";
