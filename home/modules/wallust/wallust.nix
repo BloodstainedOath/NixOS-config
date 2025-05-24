@@ -33,6 +33,12 @@
           template = "rofi.rasi";
           target = "~/.config/rofi/colors.rasi";
         };
+
+        # swaync colors
+        swaync = {
+          template = "swaync.css";
+          target = "~/.config/swaync/colors.css";
+        };
       };
     };
   };
@@ -277,6 +283,29 @@
           spacing: 0;
           text-color: @normal-foreground;
         }
-        '';
-    };
+    '';
+
+    # swaync color template - FIXED: moved inside the home.file block
+    ".config/wallust/templates/swaync.css".text = ''
+      @define-color background {{background | default("#1e1e2e")}};
+      @define-color foreground {{foreground | default("#cdd6f4")}};
+      @define-color cursor {{cursor | default(foreground)}};
+      @define-color color0 {{color0 | default("#45475a")}};
+      @define-color color1 {{color1 | default("#f38ba8")}};
+      @define-color color2 {{color2 | default("#a6e3a1")}};
+      @define-color color3 {{color3 | default("#f9e2af")}};
+      @define-color color4 {{color4 | default("#89b4fa")}};
+      @define-color color5 {{color5 | default("#f5c2e7")}};
+      @define-color color6 {{color6 | default("#94e2d5")}};
+      @define-color color7 {{color7 | default("#bac2de")}};
+      @define-color color8 {{color8 | default("#585b70")}};
+      @define-color color9 {{color9 | default("#f38ba8")}};
+      @define-color color10 {{color10 | default("#a6e3a1")}};
+      @define-color color11 {{color11 | default("#f9e2af")}};
+      @define-color color12 {{color12 | default("#89b4fa")}};
+      @define-color color13 {{color13 | default("#f5c2e7")}};
+      @define-color color14 {{color14 | default("#94e2d5")}};
+      @define-color color15 {{color15 | default("#a6adc8")}};
+    '';
+  };
 }

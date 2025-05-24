@@ -28,8 +28,8 @@
           "battery"
           "backlight"
           "tray"
-          "custom/power"
           "clock"
+          "custom/power"
         ];
 
         "hyprland/window" = {
@@ -146,7 +146,7 @@
         };
 
         "custom/hyprpicker" = {
-          format = "";
+          format = "";
           tooltip = false;
           on-click = "hyprpicker -a";
           on-click-right = "killall hyprpicker";
@@ -185,7 +185,10 @@
       };
     };
 
+    # Import the wallust-generated colors and use them in the style
     style = ''
+      @import "colors.css";
+
       * {
         border: none;
         border-radius: 10px;
@@ -204,7 +207,7 @@
         opacity: 0.4;
       }
 
-      /* Module common styling */
+      /* Module common styling using wallust colors */
       #workspaces,
       #pulseaudio,
       #battery,
@@ -217,7 +220,7 @@
       #custom-media,
       #custom-hyprpicker,
       #bluetooth {
-        background-color: rgba(30, 30, 46, 0.95);
+        background-color: alpha(@background, 0.95);
         padding: 0 12px;
         margin: 0 4px;
         border-radius: 10px;
@@ -238,15 +241,15 @@
       #custom-media:hover,
       #custom-hyprpicker:hover,
       #bluetooth:hover {
-        background-color: rgba(205, 214, 244, 0.15);
+        background-color: alpha(@foreground, 0.15);
         box-shadow: 0 0 5px currentColor;
       }
 
       /* Window title styling */
       #window {
-        color: #bac2de;
+        color: @color7;
         font-style: italic;
-        background-color: rgba(30, 30, 46, 0.95);
+        background-color: alpha(@background, 0.95);
         padding: 0 15px;
         margin: 0 4px;
         border-radius: 10px;
@@ -261,13 +264,13 @@
       }
 
       #window.focused {
-        border-bottom: 2px solid #89b4fa;
-        box-shadow: 0 0 5px #89b4fa;
+        border-bottom: 2px solid @color4;
+        box-shadow: 0 0 5px @color4;
       }
 
       /* Workspaces styling */
       #workspaces {
-        background-color: rgba(30, 30, 46, 0.95);
+        background-color: alpha(@background, 0.95);
         border-radius: 10px;
         margin-left: 5px;
         padding: 0 5px;
@@ -277,7 +280,7 @@
       #workspaces button {
         padding: 0 8px;
         background-color: transparent;
-        color: #cba6f7;
+        color: @color5;
         border-radius: 10px;
         margin: 2px;
         font-size: 13px;
@@ -285,53 +288,53 @@
       }
 
       #workspaces button:hover {
-        background: rgba(137, 180, 250, 0.3);
-        color: #cdd6f4;
-        box-shadow: 0 0 5px #89b4fa;
+        background: alpha(@color4, 0.3);
+        color: @foreground;
+        box-shadow: 0 0 5px @color4;
       }
 
       #workspaces button.active {
-        background-color: rgba(203, 166, 247, 0.5);
-        color: #cdd6f4;
-        border: 2px solid #cba6f7;
-        box-shadow: 0 0 5px #cba6f7;
+        background-color: alpha(@color5, 0.5);
+        color: @foreground;
+        border: 2px solid @color5;
+        box-shadow: 0 0 5px @color5;
       }
 
       #workspaces button.urgent {
         background-color: transparent;
-        color: #f38ba8;
-        border: 1px solid #f38ba8;
-        box-shadow: 0 0 5px #f38ba8;
+        color: @color1;
+        border: 1px solid @color1;
+        box-shadow: 0 0 5px @color1;
         animation: urgent-glow 1.5s infinite;
       }
 
       @keyframes urgent-glow {
         0% {
-          box-shadow: 0 0 2px #f38ba8;
-          border-color: #f38ba8;
+          box-shadow: 0 0 2px @color1;
+          border-color: @color1;
         }
         25% {
-          box-shadow: 0 0 8px #f38ba8;
-          border-color: #f38ba8;
+          box-shadow: 0 0 8px @color1;
+          border-color: @color1;
         }
         50% {
-          box-shadow: 0 0 12px #f38ba8;
-          border-color: #f38ba8;
-          background-color: rgba(243, 139, 168, 0.1);
+          box-shadow: 0 0 12px @color1;
+          border-color: @color1;
+          background-color: alpha(@color1, 0.1);
         }
         75% {
-          box-shadow: 0 0 8px #f38ba8;
-          border-color: #f38ba8;
+          box-shadow: 0 0 8px @color1;
+          border-color: @color1;
         }
         100% {
-          box-shadow: 0 0 2px #f38ba8;
-          border-color: #f38ba8;
+          box-shadow: 0 0 2px @color1;
+          border-color: @color1;
         }
       }
 
       /* Power button */
       #custom-power {
-        color: #f38ba8;
+        color: @color1;
         font-size: 16px;
         margin-right: 8px;
         padding: 0 12px;
@@ -339,13 +342,13 @@
       }
 
       #custom-power:hover {
-        background-color: rgba(243, 139, 168, 0.15);
-        box-shadow: 0 0 5px #f38ba8;
+        background-color: alpha(@color1, 0.15);
+        box-shadow: 0 0 5px @color1;
       }
 
       /* Clock */
       #clock {
-        color: #94e2d5;
+        color: @color6;
         font-weight: bold;
         padding: 0 15px;
         text-shadow: 0 0 1px currentColor;
@@ -353,34 +356,34 @@
 
       /* System modules */
       #pulseaudio {
-        color: #f9e2af;
+        color: @color3;
         padding: 0 12px;
         text-shadow: 0 0 1px currentColor;
       }
 
       #pulseaudio.muted {
-        color: #6c7086;
+        color: @color8;
       }
 
       #battery {
-        color: #a6e3a1;
+        color: @color2;
         padding: 0 12px;
         text-shadow: 0 0 1px currentColor;
       }
 
       #battery.charging {
-        color: #a6e3a1;
-        box-shadow: 0 0 5px #a6e3a1;
+        color: @color2;
+        box-shadow: 0 0 5px @color2;
       }
 
       #battery.warning:not(.charging) {
-        color: #f9e2af;
-        box-shadow: 0 0 5px #f9e2af;
+        color: @color3;
+        box-shadow: 0 0 5px @color3;
       }
 
       #battery.critical:not(.charging) {
-        color: #f38ba8;
-        box-shadow: 0 0 5px #f38ba8;
+        color: @color1;
+        box-shadow: 0 0 5px @color1;
         animation-name: blink;
         animation-duration: 0.5s;
         animation-timing-function: linear;
@@ -390,27 +393,27 @@
 
       @keyframes blink {
         to {
-          color: #cdd6f4;
-          background-color: #f38ba8;
-          box-shadow: 0 0 8px #f38ba8;
+          color: @foreground;
+          background-color: @color1;
+          box-shadow: 0 0 8px @color1;
         }
       }
 
       #backlight {
-        color: #89b4fa;
+        color: @color4;
         padding: 0 12px;
         text-shadow: 0 0 1px currentColor;
       }
 
       #network {
-        color: #cba6f7;
+        color: @color5;
         padding: 0 12px;
         text-shadow: 0 0 1px currentColor;
       }
 
       #network.disconnected {
-        color: #f38ba8;
-        box-shadow: 0 0 5px #f38ba8;
+        color: @color1;
+        box-shadow: 0 0 5px @color1;
       }
 
       #tray {
@@ -423,14 +426,14 @@
 
       #tray > .needs-attention {
         -gtk-icon-effect: highlight;
-        color: #f38ba8;
-        box-shadow: 0 0 5px #f38ba8;
+        color: @color1;
+        box-shadow: 0 0 5px @color1;
       }
 
       /* Media player */
       #custom-media {
-        background-color: rgba(30, 30, 46, 0.95);
-        color: #94e2d5;
+        background-color: alpha(@background, 0.95);
+        color: @color6;
         border-radius: 10px;
         margin: 0 4px;
         padding: 0 15px;
@@ -440,84 +443,84 @@
       }
 
       #custom-media.custom-spotify {
-        color: #a6e3a1;
-        box-shadow: 0 0 5px #a6e3a1;
+        color: @color2;
+        box-shadow: 0 0 5px @color2;
       }
 
       #custom-media.custom-firefox {
-        color: #fab387;
-        box-shadow: 0 0 5px #fab387;
+        color: @color3;
+        box-shadow: 0 0 5px @color3;
       }
 
       #custom-media.custom-chromium {
-        color: #89b4fa;
-        box-shadow: 0 0 5px #89b4fa;
+        color: @color4;
+        box-shadow: 0 0 5px @color4;
       }
 
       #custom-media.custom-vlc {
-        color: #cba6f7;
-        box-shadow: 0 0 5px #cba6f7;
+        color: @color5;
+        box-shadow: 0 0 5px @color5;
       }
 
       /* Notification module styling */
       #custom-notification {
-        background-color: rgba(30, 30, 46, 0.95);
+        background-color: alpha(@background, 0.95);
         padding: 0 12px;
         margin: 0 4px;
         border-radius: 10px;
-        color: #74c7ec;
+        color: @color6;
         font-size: 16px;
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
         text-shadow: 0 0 1px currentColor;
       }
 
       #custom-notification:hover {
-        background-color: rgba(205, 214, 244, 0.15);
+        background-color: alpha(@foreground, 0.15);
         box-shadow: 0 0 5px currentColor;
       }
 
       /* Different states of the notification icon */
       #custom-notification.notification {
-        color: #f38ba8;
-        box-shadow: 0 0 5px #f38ba8;
+        color: @color1;
+        box-shadow: 0 0 5px @color1;
       }
 
       #custom-notification.dnd-notification {
-        color: #f38ba8;
-        box-shadow: 0 0 5px #f38ba8;
+        color: @color1;
+        box-shadow: 0 0 5px @color1;
       }
 
       #custom-notification.inhibited-notification {
-        color: #f38ba8;
-        box-shadow: 0 0 5px #f38ba8;
+        color: @color1;
+        box-shadow: 0 0 5px @color1;
       }
 
       #custom-notification.dnd-inhibited-notification {
-        color: #f38ba8;
-        box-shadow: 0 0 5px #f38ba8;
+        color: @color1;
+        box-shadow: 0 0 5px @color1;
       }
 
       #custom-notification.dnd-none,
       #custom-notification.dnd-inhibited-none {
-        color: #6c7086;
+        color: @color8;
       }
 
       /* Hyprpicker module */
       #custom-hyprpicker {
-        color: #f5c2e7;
+        color: @color5;
         font-size: 16px;
         padding: 0 12px;
         text-shadow: 0 0 1px currentColor;
       }
 
       #custom-hyprpicker:hover {
-        background-color: rgba(245, 194, 231, 0.15);
-        box-shadow: 0 0 5px #f5c2e7;
+        background-color: alpha(@color5, 0.15);
+        box-shadow: 0 0 5px @color5;
       }
 
       /* Bluetooth module */
       #bluetooth {
-        color: #b4befe;
+        color: @color4;
         font-size: 18px;
         margin-left: 8px;
         padding: 0 12px;
@@ -525,32 +528,32 @@
       }
 
       #bluetooth.off {
-        color: #6c7086;
+        color: @color8;
       }
 
       #bluetooth.connected {
-        color: #a6e3a1;
-        box-shadow: 0 0 5px #a6e3a1;
+        color: @color2;
+        box-shadow: 0 0 5px @color2;
       }
 
       #bluetooth.discovering {
-        color: #89b4fa;
-        box-shadow: 0 0 5px #89b4fa;
+        color: @color4;
+        box-shadow: 0 0 5px @color4;
         animation: bluetooth-pulse 1.5s infinite;
       }
 
       @keyframes bluetooth-pulse {
         0% {
           opacity: 1;
-          box-shadow: 0 0 2px #89b4fa;
+          box-shadow: 0 0 2px @color4;
         }
         50% {
           opacity: 0.5;
-          box-shadow: 0 0 8px #89b4fa;
+          box-shadow: 0 0 8px @color4;
         }
         100% {
           opacity: 1;
-          box-shadow: 0 0 2px #89b4fa;
+          box-shadow: 0 0 2px @color4;
         }
       }
 
@@ -558,7 +561,7 @@
       #custom-previous,
       #custom-next,
       #mpris {
-        background-color: rgba(30, 30, 46, 0.95);
+        background-color: alpha(@background, 0.95);
         margin: 0 2px;
         border-radius: 10px;
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
@@ -567,63 +570,63 @@
 
       #custom-previous,
       #custom-next {
-        color: #89b4fa;
+        color: @color4;
         font-size: 18px;
         font-weight: bold;
         padding: 0 10px;
-        text-shadow: 0 0 5px #89b4fa, 0 0 8px #89b4fa;
+        text-shadow: 0 0 5px @color4, 0 0 8px @color4;
         animation: text-neon-pulse 1.5s infinite alternate;
       }
 
       #custom-previous:hover,
       #custom-next:hover {
-        background-color: rgba(137, 180, 250, 0.15);
-        text-shadow: 0 0 8px #89b4fa, 0 0 12px #89b4fa, 0 0 16px #89b4fa;
+        background-color: alpha(@color4, 0.15);
+        text-shadow: 0 0 8px @color4, 0 0 12px @color4, 0 0 16px @color4;
       }
 
       #mpris {
-        color: #94e2d5;
+        color: @color6;
         min-width: 100px;
         padding: 0 12px;
         font-style: italic;
       }
 
       #mpris.playing {
-        border-bottom: 2px solid #a6e3a1;
-        text-shadow: 0 0 5px #a6e3a1, 0 0 8px #a6e3a1;
+        border-bottom: 2px solid @color2;
+        text-shadow: 0 0 5px @color2, 0 0 8px @color2;
         animation: mpris-text-pulse 2s infinite alternate;
       }
 
       #mpris.paused {
-        border-bottom: 2px solid #f9e2af;
-        color: rgba(148, 226, 213, 0.7);
-        text-shadow: 0 0 3px #f9e2af;
+        border-bottom: 2px solid @color3;
+        color: alpha(@color6, 0.7);
+        text-shadow: 0 0 3px @color3;
       }
 
       #mpris.stopped {
-        color: #6c7086;
+        color: @color8;
       }
 
       #mpris:hover {
-        background-color: rgba(148, 226, 213, 0.15);
-        text-shadow: 0 0 8px #94e2d5, 0 0 12px #94e2d5;
+        background-color: alpha(@color6, 0.15);
+        text-shadow: 0 0 8px @color6, 0 0 12px @color6;
       }
 
       @keyframes text-neon-pulse {
         from {
-          text-shadow: 0 0 2px #89b4fa, 0 0 4px #89b4fa;
+          text-shadow: 0 0 2px @color4, 0 0 4px @color4;
         }
         to {
-          text-shadow: 0 0 5px #89b4fa, 0 0 10px #89b4fa, 0 0 15px #89b4fa;
+          text-shadow: 0 0 5px @color4, 0 0 10px @color4, 0 0 15px @color4;
         }
       }
 
       @keyframes mpris-text-pulse {
         from {
-          text-shadow: 0 0 2px #a6e3a1, 0 0 4px #a6e3a1;
+          text-shadow: 0 0 2px @color2, 0 0 4px @color2;
         }
         to {
-          text-shadow: 0 0 5px #a6e3a1, 0 0 10px #a6e3a1, 0 0 15px #a6e3a1;
+          text-shadow: 0 0 5px @color2, 0 0 10px @color2, 0 0 15px @color2;
         }
       }
     '';
