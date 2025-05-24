@@ -384,12 +384,18 @@
         color: @color7;
       }
 
-      /* Buttons */
+      /* Buttons - Fixed CSS grid properties */
       .widget-buttons-grid {
         padding: 8px;
         border-radius: 12px;
-        row-gap: 8px;
-        column-gap: 8px;
+      }
+
+      .widget-buttons-grid > flowbox {
+        margin: 4px;
+      }
+
+      .widget-buttons-grid > flowbox > flowboxchild {
+        margin: 4px;
       }
 
       .widget-buttons-grid > flowbox > flowboxchild > button {
@@ -436,61 +442,32 @@
         box-shadow: 0 0 4px @color4;
       }
 
-      /* Animations */
-      @keyframes notification-slide-in {
+      /* Animations - Using opacity-only since GTK doesn't support transform */
+      @keyframes notification-fade-in {
         from {
-          transform: translateX(100%);
           opacity: 0;
         }
         to {
-          transform: translateX(0);
           opacity: 1;
         }
       }
 
-      @keyframes notification-slide-out {
+      @keyframes notification-fade-out {
         from {
-          transform: translateX(0);
           opacity: 1;
         }
         to {
-          transform: translateX(100%);
           opacity: 0;
         }
       }
 
       .notification {
-        animation: notification-slide-in 200ms ease-out;
+        animation: notification-fade-in 200ms ease-out;
       }
 
       .notification.dismissed {
-        animation: notification-slide-out 200ms ease-in;
+        animation: notification-fade-out 200ms ease-in;
       }
-    '';
-  };
-
-  # Also add the swaync template to wallust configuration
-  home.file = {
-    ".config/wallust/templates/swaync.css".text = ''
-      @define-color background {{background | default("#1e1e2e")}};
-      @define-color foreground {{foreground | default("#cdd6f4")}};
-      @define-color cursor {{cursor | default(foreground)}};
-      @define-color color0 {{color0 | default("#45475a")}};
-      @define-color color1 {{color1 | default("#f38ba8")}};
-      @define-color color2 {{color2 | default("#a6e3a1")}};
-      @define-color color3 {{color3 | default("#f9e2af")}};
-      @define-color color4 {{color4 | default("#89b4fa")}};
-      @define-color color5 {{color5 | default("#f5c2e7")}};
-      @define-color color6 {{color6 | default("#94e2d5")}};
-      @define-color color7 {{color7 | default("#bac2de")}};
-      @define-color color8 {{color8 | default("#585b70")}};
-      @define-color color9 {{color9 | default("#f38ba8")}};
-      @define-color color10 {{color10 | default("#a6e3a1")}};
-      @define-color color11 {{color11 | default("#f9e2af")}};
-      @define-color color12 {{color12 | default("#89b4fa")}};
-      @define-color color13 {{color13 | default("#f5c2e7")}};
-      @define-color color14 {{color14 | default("#94e2d5")}};
-      @define-color color15 {{color15 | default("#a6adc8")}};
     '';
   };
 }
