@@ -74,6 +74,7 @@
    vscodium
    brightnessctl
    wev
+   neovim
  ];
   environment.variables = {
     XCURSOR_THEME = "Bibata-Rainbow-Modern";

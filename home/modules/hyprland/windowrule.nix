@@ -29,7 +29,6 @@
     # App pinning
     "pin, title:^(rofi - APPS)$"
     "float, title:^(Waypaper)$"
-    "pin, title:^(Waypaper)$"
 
 
     # Opacity rules
