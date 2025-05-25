@@ -37,6 +37,11 @@
     upscayl
     youtube-music
     gamescope
+    heroic
+    wineWowPackages.stable
+    winetricks
+    protonup-qt
+    qbittorrent
   ];
 
   home.file = {

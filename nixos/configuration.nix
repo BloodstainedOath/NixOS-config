@@ -21,11 +21,30 @@
       inputs.home-manager.nixosModules.home-manager
     ];
 
-    # Allow unfree packages
-    nixpkgs.config.allowUnfree = true;
+
+  
+    programs.steam = {
+    enable = true;
+    package = pkgs.steam.override {
+      extraPkgs = pkgs: with pkgs; [
+        xorg.libXcursor
+        xorg.libXi
+        xorg.libXinerama
+        xorg.libXScrnSaver
+        libpng
+        libpulseaudio
+        libvorbis
+        stdenv.cc.cc.lib
+        libkrb5
+        keyutils
+      ];
+    };
+  };
 
     home-manager = {
       extraSpecialArgs = { inherit inputs; };
+      useGlobalPkgs = true;  # Add this line
+      useUserPackages = true;  # Add this line
       users = {
         hunter = import ../home/home.nix;
       };
