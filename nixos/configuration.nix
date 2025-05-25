@@ -74,8 +74,6 @@
    vscodium
    brightnessctl
    wev
-   pipewire
-   pwvucontrol
  ];
   environment.variables = {
     XCURSOR_THEME = "Bibata-Rainbow-Modern";
