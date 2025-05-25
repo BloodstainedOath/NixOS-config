@@ -43,7 +43,8 @@
   };
 
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    XCURSOR_THEME = "Bibata-Rainbow-Modern";
+    XCURSOR_SIZE = "24";
   };
 
    programs.zsh = {

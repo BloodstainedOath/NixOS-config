@@ -73,10 +73,18 @@
    appimage-run
    vscodium
    brightnessctl
+   wev
+   pipewire
+   pwvucontrol
  ];
   environment.variables = {
     XCURSOR_THEME = "Bibata-Rainbow-Modern";
     XCURSOR_SIZE = "24"; # Optional: set cursor size (16, 24, 32, 48)
+  };
+
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ALL = "en_US.UTF-8";
   };
 
   system.stateVersion = "24.11";

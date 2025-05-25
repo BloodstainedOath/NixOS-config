@@ -51,6 +51,7 @@
         "title"
         "dnd"
         "notifications"
+        "mpris"  # Added MPRIS widget at the bottom
       ];
       widget-config = {
         inhibitors = {
@@ -73,6 +74,10 @@
         mpris = {
           image-size = 96;
           image-radius = 12;
+          blur = true;
+          "xesam:artist" = true;
+          "xesam:album" = true;
+          "xesam:title" = true;
         };
       };
     };
@@ -336,7 +341,7 @@
         font-size: 1rem;
       }
 
-      /* MPRIS widget */
+      /* MPRIS widget - Enhanced styling */
       .widget-mpris {
         color: @color2;
         background: alpha(@color2, 0.1);
@@ -355,6 +360,8 @@
         padding: 8px;
         margin: 4px;
         transition: all 200ms ease;
+        min-width: 32px;
+        min-height: 32px;
       }
 
       .widget-mpris > box > button:hover {
@@ -364,7 +371,7 @@
       }
 
       .widget-mpris-player {
-        padding: 8px 16px;
+        padding: 12px 16px;
         margin: 8px 16px 16px 16px;
         background: alpha(@background, 0.9);
         border-radius: 12px;
@@ -372,16 +379,78 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       }
 
+      .widget-mpris-album-art {
+        border-radius: 8px;
+        margin-right: 12px;
+      }
+
       .widget-mpris-title {
         font-weight: bold;
         font-size: 1.25rem;
         color: @foreground;
         text-shadow: 0 0 2px alpha(@foreground, 0.5);
+        margin-bottom: 4px;
       }
 
       .widget-mpris-subtitle {
         font-size: 1.1rem;
         color: @color7;
+        margin-bottom: 8px;
+      }
+
+      /* Control buttons container */
+      .widget-mpris .button-box {
+        margin-top: 12px;
+      }
+
+      /* Individual control buttons */
+      .widget-mpris .control-button {
+        background: alpha(@color2, 0.8);
+        border: none;
+        border-radius: 50%;
+        color: @foreground;
+        padding: 10px;
+        transition: all 200ms ease;
+        min-width: 40px;
+        min-height: 40px;
+      }
+
+      .widget-mpris .control-button:hover {
+        background: @color2;
+        box-shadow: 0 0 8px @color2;
+      }
+
+      .widget-mpris .play-pause-button {
+        background: alpha(@color4, 0.8);
+        min-width: 48px;
+        min-height: 48px;
+      }
+
+      .widget-mpris .play-pause-button:hover {
+        background: @color4;
+        box-shadow: 0 0 10px @color4;
+      }
+
+      /* Progress bar styling */
+      .widget-mpris-progress {
+        margin: 8px 0;
+      }
+
+      .widget-mpris-progress scale {
+        border-radius: 4px;
+        background: alpha(@color8, 0.3);
+      }
+
+      .widget-mpris-progress scale trough {
+        border-radius: 4px;
+        background: alpha(@color8, 0.3);
+        min-height: 4px;
+      }
+
+      .widget-mpris-progress scale highlight {
+        border-radius: 4px;
+        background: @color2;
+        box-shadow: 0 0 4px @color2;
       }
 
       /* Buttons - Fixed CSS grid properties */
