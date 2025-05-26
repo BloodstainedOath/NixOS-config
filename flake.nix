@@ -43,8 +43,6 @@
             pillow
             requests
           ]))
-          pkgs.gtk3
-          pkgs.gobject-introspection
         ];
         shellHook = ''
           echo "🐍 Python dev shell ready"
