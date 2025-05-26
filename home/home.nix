@@ -43,7 +43,6 @@
     protonup-qt
     qbittorrent
     protonvpn-gui
-    protonmail-desktop
   ];
 
   home.file = {
