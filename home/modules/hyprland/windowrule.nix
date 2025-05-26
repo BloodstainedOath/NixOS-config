@@ -29,6 +29,8 @@
     # App pinning
     "pin, title:^(rofi - APPS)$"
     "float, title:^(Waypaper)$"
+    "float, title:^(Proton VPN)$"
+    "size 800 600, title:^(Proton VPN)$"
 
 
     # Opacity rules
