@@ -9,6 +9,7 @@
     ./modules/rofi/rofi.nix
     ./modules/swaync/swaync.nix
     ./modules/wlogout/wlogout.nix
+    ./modules/waypaper/waypaper.nix
   ];
 
   home.username = "hunter";
