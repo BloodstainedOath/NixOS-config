@@ -94,6 +94,7 @@
    brightnessctl
    wev
    neovim
+   electron_36
  ];
   environment.variables = {
     XCURSOR_THEME = "Bibata-Rainbow-Modern";

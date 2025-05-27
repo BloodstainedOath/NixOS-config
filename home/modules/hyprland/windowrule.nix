@@ -11,6 +11,7 @@
     "center, title:^(Save As)(.*)$"
     "center, title:^(Library)(.*)$"
     "center, title:^(File Upload)(.*)$"
+    "center, title:^(Select App)(.*)$"
     "float, title:^(Open File)(.*)$"
     "float, title:^(Select a File)(.*)$"
     "float, title:^(Choose wallpaper)(.*)$"
@@ -18,6 +19,7 @@
     "float, title:^(Save As)(.*)$"
     "float, title:^(Library)(.*)$"
     "float, title:^(File Upload)(.*)$"
+    "float, title:^(Select App)(.*)$"
   ];
 
   windowrulev2 = [
@@ -31,6 +33,7 @@
     "float, title:^(Waypaper)$"
     "float, title:^(Proton VPN)$"
     "size 800 600, title:^(Proton VPN)$"
+    "size 400 200, title:^(Select App)$"
 
 
     # Opacity rules
@@ -38,8 +41,8 @@
     "opacity 0.90 0.90, class:^(kitty)$"
     "float, class:^(kitty)$, title:^(btop)$"
     # Uncomment these if needed
-    # "noborder, class:^(kitty)$"
-    # "noshadow, class:^(kitty)$"
+    "noborder, class:^(firefox-dev)$"
+    "noshadow, class:^(firefox-dev)$"
     ];
   };
 

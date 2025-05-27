@@ -225,8 +225,10 @@
         margin: 0 4px;
         border-radius: 10px;
         min-height: 20px;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-        text-shadow: 0 0 1px currentColor;
+        box-shadow: 0 0 5px alpha(@color1, 0.3),
+                    0 0 10px alpha(@color2, 0.2);
+        text-shadow: 0 0 3px currentColor;
+        transition: all 0.3s ease;
       }
 
       #workspaces:hover,
@@ -242,7 +244,9 @@
       #custom-hyprpicker:hover,
       #bluetooth:hover {
         background-color: alpha(@foreground, 0.15);
-        box-shadow: 0 0 5px currentColor;
+        box-shadow: 0 0 8px alpha(@color1, 0.4),
+                    0 0 15px alpha(@color2, 0.3);
+        text-shadow: 0 0 5px currentColor;
       }
 
       /* Window title styling */
@@ -293,11 +297,12 @@
         box-shadow: 0 0 5px @color4;
       }
 
+      /* Active workspace styling */
       #workspaces button.active {
-        background-color: alpha(@color5, 0.5);
-        color: @foreground;
-        border: 2px solid @color5;
-        box-shadow: 0 0 5px @color5;
+        background-color: alpha(@color1, 0.3);
+        box-shadow: 0 0 15px alpha(@color1, 0.7),
+                    0 0 30px alpha(@color2, 0.5);
+        text-shadow: 0 0 8px @color1;
       }
 
       #workspaces button.urgent {
@@ -338,7 +343,8 @@
         font-size: 16px;
         margin-right: 8px;
         padding: 0 12px;
-        text-shadow: 0 0 1px currentColor;
+        text-shadow: 0 0 5px @color1,
+                     0 0 10px alpha(@color1, 0.5);
       }
 
       #custom-power:hover {
@@ -348,17 +354,19 @@
 
       /* Clock */
       #clock {
-        color: @color6;
+        color: @color7;
         font-weight: bold;
         padding: 0 15px;
-        text-shadow: 0 0 1px currentColor;
+        text-shadow: 0 0 5px @color7,
+                     0 0 10px alpha(@color7, 0.5);
       }
 
       /* System modules */
       #pulseaudio {
         color: @color3;
         padding: 0 12px;
-        text-shadow: 0 0 1px currentColor;
+        text-shadow: 0 0 5px @color3,
+                     0 0 10px alpha(@color3, 0.5);
       }
 
       #pulseaudio.muted {
@@ -368,7 +376,8 @@
       #battery {
         color: @color2;
         padding: 0 12px;
-        text-shadow: 0 0 1px currentColor;
+        text-shadow: 0 0 5px @color2,
+                     0 0 10px alpha(@color2, 0.5);
       }
 
       #battery.charging {
@@ -402,7 +411,8 @@
       #backlight {
         color: @color4;
         padding: 0 12px;
-        text-shadow: 0 0 1px currentColor;
+        text-shadow: 0 0 5px @color4,
+                     0 0 10px alpha(@color4, 0.5);
       }
 
       #network {
@@ -510,7 +520,8 @@
         color: @color5;
         font-size: 16px;
         padding: 0 12px;
-        text-shadow: 0 0 1px currentColor;
+        text-shadow: 0 0 5px @color5,
+                     0 0 10px alpha(@color5, 0.5);
       }
 
       #custom-hyprpicker:hover {
@@ -566,26 +577,25 @@
         border-radius: 10px;
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
         transition: all 0.3s ease;
+        color: @color5;
+        text-shadow: 0 0 5px @color5,
+                     0 0 10px alpha(@color5, 0.5);
       }
 
       #custom-previous,
       #custom-next {
-        color: @color4;
         font-size: 18px;
         font-weight: bold;
         padding: 0 10px;
-        text-shadow: 0 0 5px @color4, 0 0 8px @color4;
         animation: text-neon-pulse 1.5s infinite alternate;
       }
 
       #custom-previous:hover,
       #custom-next:hover {
         background-color: alpha(@color4, 0.15);
-        text-shadow: 0 0 8px @color4, 0 0 12px @color4, 0 0 16px @color4;
       }
 
       #mpris {
-        color: @color6;
         min-width: 100px;
         padding: 0 12px;
         font-style: italic;

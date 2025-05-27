@@ -345,11 +345,12 @@
       .widget-mpris {
         color: @color2;
         background: alpha(@color2, 0.1);
-        padding: 8px 16px;
+        padding: 16px 16px 8px 16px; /* More top padding, less bottom */
         margin: 8px 16px 16px 16px;
         border-radius: 12px;
         text-shadow: 0 0 2px @color2;
         box-shadow: inset 0 0 0 1px alpha(@color2, 0.3);
+        min-height: 180px;
       }
 
       .widget-mpris > box > button {
@@ -371,12 +372,13 @@
       }
 
       .widget-mpris-player {
-        padding: 12px 16px;
-        margin: 8px 16px 16px 16px;
+        padding: 8px 8px 0 8px;
+        margin: 8px 16px 8px 16px;
         background: alpha(@background, 0.9);
         border-radius: 12px;
         border: 1px solid alpha(@color2, 0.3);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        min-height: 120px;
       }
 
       .widget-mpris-album-art {
@@ -400,7 +402,8 @@
 
       /* Control buttons container */
       .widget-mpris .button-box {
-        margin-top: 12px;
+        margin-top: 8px;
+        margin-bottom: 0;
       }
 
       /* Individual control buttons */

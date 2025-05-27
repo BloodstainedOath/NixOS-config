@@ -43,6 +43,7 @@
     protonup-qt
     qbittorrent
     protonvpn-gui
+    vesktop
   ];
 
   home.file = {
