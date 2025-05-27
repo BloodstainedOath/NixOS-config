@@ -47,6 +47,8 @@
     vesktop
     hyprlock
     libreoffice-qt6-fresh
+    kdePackages.dolphin
+    materialgram
   ];
 
   home.file = {
@@ -104,7 +106,6 @@ iconTheme = {
 };
 qt = {
   enable = true;
-  platformTheme.name = "gtk";
 };
 
 

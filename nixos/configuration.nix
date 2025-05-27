@@ -68,8 +68,8 @@
    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
    wget
    git
-   mtpfs
    gvfs
+   mtpfs
    kitty
    kdePackages.kate
    zip
@@ -95,6 +95,8 @@
    wev
    neovim
    electron_36
+   neofetch
+   polkit_gnome
  ];
   environment.variables = {
     XCURSOR_THEME = "Bibata-Rainbow-Modern";

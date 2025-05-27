@@ -29,7 +29,7 @@
           monitor = "";
           text = "Welcome! Hunter";
           color = "rgb(234, 190, 175)";
-          font_size = 55;
+          font_size = 50;
           font_family = "Cinzel Decorative";
           position = "150, 320";
           halign = "left";
@@ -72,24 +72,13 @@
           halign = "left";
           valign = "center";
         }
-        # CURRENT SONG
-        {
-          monitor = "";
-          text = "cmd[update:1000] echo \"$(~/.config/hypr/scripts/songdetail.sh)\"";
-          color = "rgba(255, 255, 255, 0.65)";
-          font_size = 14;
-          font_family = "JetBrains Mono Nerd, SF Pro Display Bold";
-          position = "210, 45";
-          halign = "left";
-          valign = "bottom";
-        }
       ];
 
       # PROFILE PHOTO
       image = [
         {
           monitor = "";
-          path = "~/.config/hypr/knight.png";
+          path = "$HOME/Pictures/icons/lady.jpg";
           border_size = 2;
           border_color = "rgba(255, 255, 255, .75)";
           size = 95;

@@ -5,10 +5,26 @@
 
   # Enable Zsh shell
   programs.zsh.enable = true;
-
-  services.gvfs.enable = true;
   
   programs.gamemode.enable = true;
+
+  services.gvfs.enable = true;
+
+  # Enable Bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;  # Optional but useful
+  };
+
+  # Enable the Bluetooth service
+  services.blueman.enable = true;  # for GUI (GTK-based), optional
+
+  # Optional: add bluetooth tools
+  environment.systemPackages = with pkgs; [
+    bluez
+    bluez-tools
+    blueman  # GUI frontend
+  ];
 
   # Allow Flake
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

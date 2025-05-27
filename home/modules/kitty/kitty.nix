@@ -32,6 +32,7 @@
     extraConfig = ''
       # You can include a custom theme here if you want
       include ~/.config/kitty/colors.conf
+      shell zsh -c "neofetch; exec zsh"
     '';
   };
 }
