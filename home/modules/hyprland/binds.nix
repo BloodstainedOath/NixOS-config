@@ -87,6 +87,7 @@
       # Launchers and menus
       "$mainMod, R, exec, wofi --show drun"
       "$mainMod CTRL, RETURN, exec, $menu"
+      "$mainMod, L, exec, hyprlock"
 
       # Browsers and communication
       "$mainMod, B, exec, $browser"

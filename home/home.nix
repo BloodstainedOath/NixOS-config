@@ -9,6 +9,7 @@
     ./modules/rofi/rofi.nix
     ./modules/swaync/swaync.nix
     ./modules/wlogout/wlogout.nix
+    ./modules/hyprland/hyprlock.nix
   ];
 
   home.username = "hunter";
@@ -44,6 +45,7 @@
     qbittorrent
     protonvpn-gui
     vesktop
+    hyprlock
   ];
 
   home.file = {
