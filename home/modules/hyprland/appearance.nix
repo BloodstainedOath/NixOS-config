@@ -54,7 +54,7 @@
         mfact = 0.55;        
         smart_resizing = true;        
         special_scale_factor = 0.8;
-        new_status = "slave";
+        new_status = "master";
     };
 
     misc = {
