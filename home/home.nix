@@ -46,6 +46,7 @@
     protonvpn-gui
     vesktop
     hyprlock
+    libreoffice-qt6-fresh
   ];
 
   home.file = {

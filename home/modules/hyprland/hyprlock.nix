@@ -1,23 +1,13 @@
-{ config, pkgs, ... }:
-
 {
   programs.hyprlock = {
     enable = true;
     settings = {
-      general = {
-        disable_loading_bar = true;
-        hide_cursor = true;
-        grace = 0;
-        no_fade_in = false;
-        no_fade_out = false;
-      };
-
+      # BACKGROUND
       background = [
         {
-          path = "screenshot";
-          blur_passes = 3;
-          blur_size = 8;
-          noise = 0.0117;
+          monitor = "";
+          path = "$HOME/Pictures/Knight/Bloodborne/wallhaven_d62d6j.png";
+          blur_passes = 0;
           contrast = 0.8916;
           brightness = 0.8172;
           vibrancy = 0.1696;
@@ -25,45 +15,132 @@
         }
       ];
 
-      input-field = [
+      # GENERAL
+      general = {
+        no_fade_in = false;
+        grace = 0;
+        disable_loading_bar = false;
+      };
+
+      # LABELS
+      label = [
+        # GREETINGS
         {
-          size = "200, 50";
-          outline_thickness = 2;
+          monitor = "";
+          text = "Welcome! Hunter";
+          color = "rgb(234, 190, 175)";
+          font_size = 55;
+          font_family = "Cinzel Decorative";
+          position = "150, 320";
+          halign = "left";
+          valign = "center";
+        }
+        # Time
+        {
+          monitor = "";
+          text = "cmd[update:1000] echo \"<span>$(date +\"%I:%M %p\")</span>\"";
+          color = "rgba(216, 222, 233, .75)";
+          font_size = 40;
+          font_family = "Cinzel Decorative";
+          position = "240, 240";
+          halign = "left";
+          valign = "center";
+        }
+        # Day-Month-Date
+        {
+          monitor = "";
+          text = "cmd[update:1000] echo -e \"$(date +\"%A, %B %d %Y\")\"";
+          color = "rgba(216, 222, 233, .75)";
+          font_size = 19;
+          font_family = "Cinzel Decorative";
+          position = "217, 175";
+          halign = "left";
+          valign = "center";
+        }
+        # USER
+        {
+          monitor = "";
+          text = "     $USER";
+          color = "rgba(216, 222, 233, 0.80)";
+          outline_thickness = 0;
           dots_size = 0.2;
           dots_spacing = 0.2;
           dots_center = true;
-          outer_color = "rgb(151515)";
-          inner_color = "rgb(200, 200, 200)";
-          font_color = "rgb(10, 10, 10)";
-          fade_on_empty = true;
-          placeholder_text = "Password...";
-          hide_input = false;
-          position = "0, -120";
-          halign = "center";
+          font_size = 16;
+          font_family = "SF Pro Display Bold";
+          position = "275, -140";
+          halign = "left";
+          valign = "center";
+        }
+        # CURRENT SONG
+        {
+          monitor = "";
+          text = "cmd[update:1000] echo \"$(~/.config/hypr/scripts/songdetail.sh)\"";
+          color = "rgba(255, 255, 255, 0.65)";
+          font_size = 14;
+          font_family = "JetBrains Mono Nerd, SF Pro Display Bold";
+          position = "210, 45";
+          halign = "left";
+          valign = "bottom";
+        }
+      ];
+
+      # PROFILE PHOTO
+      image = [
+        {
+          monitor = "";
+          path = "~/.config/hypr/knight.png";
+          border_size = 2;
+          border_color = "rgba(255, 255, 255, .75)";
+          size = 95;
+          rounding = -1;
+          rotate = 0;
+          reload_time = -1;
+          reload_cmd = "";
+          position = "270, 25";
+          halign = "left";
           valign = "center";
         }
       ];
 
-      label = [
+      # USER-BOX SHAPE
+      shape = [
         {
-          text = "cmd[update:1000] echo \"$(date +\"%H:%M\")\"";
-          color = "rgb(202, 138, 120)";
-          font_size = 120;
-          font_family = "JetBrains Mono Nerd Font";
-          position = "0, -300";
-          halign = "center";
+          monitor = "";
+          size = "320, 55";
+          color = "rgba(255, 255, 255, .1)";
+          rounding = -1;
+          border_size = 0;
+          border_color = "rgba(255, 255, 255, 1)";
+          rotate = 0;
+          xray = false;
+          position = "160, -140";
+          halign = "left";
           valign = "center";
         }
+      ];
+
+      # INPUT FIELD
+      input-field = [
         {
-          text = "cmd[update:1000] echo \"$(date +\"%A, %d %B %Y\")\"";
-          color = "rgb(223, 142, 29)";
-          font_size = 24;
-          font_family = "JetBrains Mono Nerd Font";
-          position = "0, -180";
-          halign = "center";
+          monitor = "";
+          size = "320, 55";
+          outline_thickness = 0;
+          dots_size = 0.2;
+          dots_spacing = 0.2;
+          dots_center = true;
+          outer_color = "rgba(255, 255, 255, 0)";
+          inner_color = "rgba(255, 255, 255, 0.1)";
+          font_color = "rgb(200, 200, 200)";
+          fade_on_empty = false;
+          font_family = "SF Pro Display Bold";
+          placeholder_text = "<i><span foreground=\"##ffffff99\">🔒  Enter Pass</span></i>";
+          hide_input = false;
+          position = "160, -220";
+          halign = "left";
           valign = "center";
         }
       ];
     };
   };
-} 
+}
