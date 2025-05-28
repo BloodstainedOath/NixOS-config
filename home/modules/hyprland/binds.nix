@@ -9,6 +9,7 @@
     "$menu" = "$HOME/.config/rofi/launcher.sh";
     "$browser" = "firefox-devedition";
     "$codeEditor" = "codium";
+    "$second_browser" = "Vivaldi-stable";
 
     bind = [
       # Window Management
@@ -91,6 +92,7 @@
 
       # Browsers and communication
       "$mainMod, B, exec, $browser"
+      "$mainMod SHIFT, B, exec, $second_browser"
       "$mainMod, D, exec, vesktop"
 
       # Development and productivity
@@ -125,9 +127,6 @@
 
       # Clipboard
       "$mainMod, V, exec, sh -c 'cliphist list | wofi -dmenu | cliphist decode | wl-copy'"
-
-      # Launching waybar and swaync after wallust
-      "$mainMod SHIFT, B, exec, $HOME/.config/waypaper/bar.sh"
     ];
 
     #######################

@@ -34,6 +34,7 @@
 
         "hyprland/window" = {
           format = "{}";
+          max-length = 50;
           separate-outputs = true;
         };
 
@@ -220,14 +221,17 @@
       #custom-media,
       #custom-hyprpicker,
       #bluetooth {
-        background-color: alpha(@background, 0.95);
+        background-color: alpha(@background, 0.8);
         padding: 0 12px;
         margin: 0 4px;
         border-radius: 10px;
         min-height: 20px;
-        box-shadow: 0 0 5px alpha(@color1, 0.3),
-                    0 0 10px alpha(@color2, 0.2);
-        text-shadow: 0 0 3px currentColor;
+        box-shadow: 0 0 2px alpha(@background, 0.5);
+        border: 1px solid alpha(currentColor, 0.05);
+        color: currentColor;
+        text-shadow: 0 0 6px currentColor,
+                     0 0 12px alpha(currentColor, 0.8),
+                     0 0 20px alpha(currentColor, 0.6);
         transition: all 0.3s ease;
       }
 
@@ -243,10 +247,11 @@
       #custom-media:hover,
       #custom-hyprpicker:hover,
       #bluetooth:hover {
-        background-color: alpha(@foreground, 0.15);
-        box-shadow: 0 0 8px alpha(@color1, 0.4),
-                    0 0 15px alpha(@color2, 0.3);
-        text-shadow: 0 0 5px currentColor;
+        background-color: alpha(@background, 0.7);
+        border: 1px solid alpha(currentColor, 0.2);
+        text-shadow: 0 0 10px currentColor,
+                     0 0 20px currentColor,
+                     0 0 30px alpha(currentColor, 0.8);
       }
 
       /* Window title styling */
@@ -257,19 +262,22 @@
         padding: 0 15px;
         margin: 0 4px;
         border-radius: 10px;
-        font-weight: bold;
+        font-weight: bolder;
         min-width: 100px;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-        text-shadow: 0 0 1px currentColor;
+        text-shadow: 0 0 8px @color7,
+                     0 0 15px alpha(@color7, 0.8);
       }
 
       #window.empty {
         background-color: transparent;
+        box-shadow: none;
       }
 
       #window.focused {
         border-bottom: 2px solid @color4;
-        box-shadow: 0 0 5px @color4;
+        text-shadow: 0 0 10px @color4,
+                     0 0 20px @color4,
+                     0 0 30px alpha(@color4, 0.7);
       }
 
       /* Workspaces styling */
@@ -278,7 +286,6 @@
         border-radius: 10px;
         margin-left: 5px;
         padding: 0 5px;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
       }
 
       #workspaces button {
@@ -288,52 +295,56 @@
         border-radius: 10px;
         margin: 2px;
         font-size: 13px;
-        text-shadow: 0 0 1px currentColor;
+        text-shadow: 0 0 6px @color5,
+                     0 0 12px alpha(@color5, 0.7);
+        transition: all 0.2s ease;
       }
 
       #workspaces button:hover {
-        background: alpha(@color4, 0.3);
+        background: alpha(@color4, 0.2);
         color: @foreground;
-        box-shadow: 0 0 5px @color4;
+        text-shadow: 0 0 10px @color4,
+                     0 0 20px @color4;
       }
 
       /* Active workspace styling */
       #workspaces button.active {
-        background-color: alpha(@color1, 0.3);
-        box-shadow: 0 0 15px alpha(@color1, 0.7),
-                    0 0 30px alpha(@color2, 0.5);
-        text-shadow: 0 0 8px @color1;
+        background-color: alpha(@color1, 0.2);
+        text-shadow: 0 0 10px @color1,
+                     0 0 20px @color1,
+                     0 0 30px alpha(@color1, 0.8);
+        animation: active-workspace-text-glow 3s infinite alternate;
+      }
+
+      @keyframes active-workspace-text-glow {
+        0% {
+          text-shadow: 0 0 8px @color1, 
+                       0 0 15px @color1;
+        }
+        100% {
+          text-shadow: 0 0 15px @color1, 
+                       0 0 25px @color1, 
+                       0 0 35px @color1;
+        }
       }
 
       #workspaces button.urgent {
         background-color: transparent;
         color: @color1;
         border: 1px solid @color1;
-        box-shadow: 0 0 5px @color1;
-        animation: urgent-glow 1.5s infinite;
+        animation: urgent-text-glow 1.5s infinite;
       }
 
-      @keyframes urgent-glow {
+      @keyframes urgent-text-glow {
         0% {
-          box-shadow: 0 0 2px @color1;
-          border-color: @color1;
-        }
-        25% {
-          box-shadow: 0 0 8px @color1;
-          border-color: @color1;
+          text-shadow: 0 0 5px @color1;
         }
         50% {
-          box-shadow: 0 0 12px @color1;
-          border-color: @color1;
-          background-color: alpha(@color1, 0.1);
-        }
-        75% {
-          box-shadow: 0 0 8px @color1;
-          border-color: @color1;
+          text-shadow: 0 0 15px @color1, 
+                       0 0 25px @color1;
         }
         100% {
-          box-shadow: 0 0 2px @color1;
-          border-color: @color1;
+          text-shadow: 0 0 5px @color1;
         }
       }
 
@@ -343,13 +354,29 @@
         font-size: 16px;
         margin-right: 8px;
         padding: 0 12px;
-        text-shadow: 0 0 5px @color1,
-                     0 0 10px alpha(@color1, 0.5);
+        text-shadow: 0 0 10px @color1,
+                     0 0 20px @color1,
+                     0 0 30px alpha(@color1, 0.8);
+        animation: power-text-pulse 4s infinite alternate;
+      }
+
+      @keyframes power-text-pulse {
+        0% {
+          text-shadow: 0 0 8px @color1, 
+                       0 0 15px @color1;
+        }
+        100% {
+          text-shadow: 0 0 15px @color1, 
+                       0 0 25px @color1, 
+                       0 0 40px @color1;
+        }
       }
 
       #custom-power:hover {
         background-color: alpha(@color1, 0.15);
-        box-shadow: 0 0 5px @color1;
+        text-shadow: 0 0 15px @color1,
+                     0 0 30px @color1,
+                     0 0 45px alpha(@color1, 0.9);
       }
 
       /* Clock */
@@ -357,42 +384,58 @@
         color: @color7;
         font-weight: bold;
         padding: 0 15px;
-        text-shadow: 0 0 5px @color7,
-                     0 0 10px alpha(@color7, 0.5);
+        text-shadow: 0 0 10px @color7,
+                     0 0 20px alpha(@color7, 0.8);
       }
 
       /* System modules */
       #pulseaudio {
         color: @color3;
         padding: 0 12px;
-        text-shadow: 0 0 5px @color3,
-                     0 0 10px alpha(@color3, 0.5);
+        text-shadow: 0 0 10px @color3,
+                     0 0 20px alpha(@color3, 0.8);
       }
 
       #pulseaudio.muted {
         color: @color8;
+        text-shadow: 0 0 8px @color8,
+                     0 0 15px alpha(@color8, 0.7);
       }
 
       #battery {
         color: @color2;
         padding: 0 12px;
-        text-shadow: 0 0 5px @color2,
-                     0 0 10px alpha(@color2, 0.5);
+        text-shadow: 0 0 10px @color2,
+                     0 0 20px alpha(@color2, 0.8);
       }
 
       #battery.charging {
         color: @color2;
-        box-shadow: 0 0 5px @color2;
+        text-shadow: 0 0 12px @color2,
+                     0 0 25px @color2;
+        animation: charging-text-pulse 2s infinite alternate;
+      }
+
+      @keyframes charging-text-pulse {
+        0% {
+          text-shadow: 0 0 8px @color2, 
+                       0 0 15px @color2;
+        }
+        100% {
+          text-shadow: 0 0 15px @color2, 
+                       0 0 25px @color2, 
+                       0 0 35px @color2;
+        }
       }
 
       #battery.warning:not(.charging) {
         color: @color3;
-        box-shadow: 0 0 5px @color3;
+        text-shadow: 0 0 12px @color3,
+                     0 0 25px @color3;
       }
 
       #battery.critical:not(.charging) {
         color: @color1;
-        box-shadow: 0 0 5px @color1;
         animation-name: blink;
         animation-duration: 0.5s;
         animation-timing-function: linear;
@@ -404,26 +447,28 @@
         to {
           color: @foreground;
           background-color: @color1;
-          box-shadow: 0 0 8px @color1;
+          text-shadow: 0 0 10px @foreground;
         }
       }
 
       #backlight {
         color: @color4;
         padding: 0 12px;
-        text-shadow: 0 0 5px @color4,
-                     0 0 10px alpha(@color4, 0.5);
+        text-shadow: 0 0 10px @color4,
+                     0 0 20px alpha(@color4, 0.8);
       }
 
       #network {
         color: @color5;
         padding: 0 12px;
-        text-shadow: 0 0 1px currentColor;
+        text-shadow: 0 0 10px @color5,
+                     0 0 20px alpha(@color5, 0.8);
       }
 
       #network.disconnected {
         color: @color1;
-        box-shadow: 0 0 5px @color1;
+        text-shadow: 0 0 12px @color1,
+                     0 0 25px @color1;
       }
 
       #tray {
@@ -437,7 +482,6 @@
       #tray > .needs-attention {
         -gtk-icon-effect: highlight;
         color: @color1;
-        box-shadow: 0 0 5px @color1;
       }
 
       /* Media player */
@@ -448,28 +492,32 @@
         margin: 0 4px;
         padding: 0 15px;
         min-width: 100px;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-        text-shadow: 0 0 1px currentColor;
+        text-shadow: 0 0 10px @color6,
+                     0 0 20px alpha(@color6, 0.8);
       }
 
       #custom-media.custom-spotify {
         color: @color2;
-        box-shadow: 0 0 5px @color2;
+        text-shadow: 0 0 10px @color2,
+                     0 0 20px alpha(@color2, 0.8);
       }
 
       #custom-media.custom-firefox {
         color: @color3;
-        box-shadow: 0 0 5px @color3;
+        text-shadow: 0 0 10px @color3,
+                     0 0 20px alpha(@color3, 0.8);
       }
 
       #custom-media.custom-chromium {
         color: @color4;
-        box-shadow: 0 0 5px @color4;
+        text-shadow: 0 0 10px @color4,
+                     0 0 20px alpha(@color4, 0.8);
       }
 
       #custom-media.custom-vlc {
         color: @color5;
-        box-shadow: 0 0 5px @color5;
+        text-shadow: 0 0 10px @color5,
+                     0 0 20px alpha(@color5, 0.8);
       }
 
       /* Notification module styling */
@@ -480,39 +528,59 @@
         border-radius: 10px;
         color: @color6;
         font-size: 16px;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-        text-shadow: 0 0 1px currentColor;
+        text-shadow: 0 0 10px @color6,
+                     0 0 20px alpha(@color6, 0.8);
       }
 
       #custom-notification:hover {
         background-color: alpha(@foreground, 0.15);
-        box-shadow: 0 0 5px currentColor;
+        text-shadow: 0 0 15px currentColor,
+                     0 0 30px currentColor;
       }
 
       /* Different states of the notification icon */
       #custom-notification.notification {
         color: @color1;
-        box-shadow: 0 0 5px @color1;
+        text-shadow: 0 0 12px @color1,
+                     0 0 25px @color1;
+        animation: notification-text-pulse 2s infinite alternate;
+      }
+
+      @keyframes notification-text-pulse {
+        0% {
+          text-shadow: 0 0 8px @color1, 
+                       0 0 15px @color1;
+        }
+        100% {
+          text-shadow: 0 0 15px @color1, 
+                       0 0 25px @color1, 
+                       0 0 35px @color1;
+        }
       }
 
       #custom-notification.dnd-notification {
         color: @color1;
-        box-shadow: 0 0 5px @color1;
+        text-shadow: 0 0 12px @color1,
+                     0 0 25px @color1;
       }
 
       #custom-notification.inhibited-notification {
         color: @color1;
-        box-shadow: 0 0 5px @color1;
+        text-shadow: 0 0 12px @color1,
+                     0 0 25px @color1;
       }
 
       #custom-notification.dnd-inhibited-notification {
         color: @color1;
-        box-shadow: 0 0 5px @color1;
+        text-shadow: 0 0 12px @color1,
+                     0 0 25px @color1;
       }
 
       #custom-notification.dnd-none,
       #custom-notification.dnd-inhibited-none {
         color: @color8;
+        text-shadow: 0 0 8px @color8,
+                     0 0 15px alpha(@color8, 0.7);
       }
 
       /* Hyprpicker module */
@@ -520,13 +588,14 @@
         color: @color5;
         font-size: 16px;
         padding: 0 12px;
-        text-shadow: 0 0 5px @color5,
-                     0 0 10px alpha(@color5, 0.5);
+        text-shadow: 0 0 10px @color5,
+                     0 0 20px alpha(@color5, 0.8);
       }
 
       #custom-hyprpicker:hover {
         background-color: alpha(@color5, 0.15);
-        box-shadow: 0 0 5px @color5;
+        text-shadow: 0 0 15px @color5,
+                     0 0 30px @color5;
       }
 
       /* Bluetooth module */
@@ -535,36 +604,42 @@
         font-size: 18px;
         margin-left: 8px;
         padding: 0 12px;
-        text-shadow: 0 0 1px currentColor;
+        text-shadow: 0 0 10px @color4,
+                     0 0 20px alpha(@color4, 0.8);
       }
 
       #bluetooth.off {
         color: @color8;
+        text-shadow: 0 0 8px @color8,
+                     0 0 15px alpha(@color8, 0.7);
       }
 
       #bluetooth.connected {
         color: @color2;
-        box-shadow: 0 0 5px @color2;
+        text-shadow: 0 0 12px @color2,
+                     0 0 25px @color2;
       }
 
       #bluetooth.discovering {
         color: @color4;
-        box-shadow: 0 0 5px @color4;
-        animation: bluetooth-pulse 1.5s infinite;
+        animation: bluetooth-text-pulse 1.5s infinite;
       }
 
-      @keyframes bluetooth-pulse {
+      @keyframes bluetooth-text-pulse {
         0% {
           opacity: 1;
-          box-shadow: 0 0 2px @color4;
+          text-shadow: 0 0 8px @color4, 
+                       0 0 15px @color4;
         }
         50% {
-          opacity: 0.5;
-          box-shadow: 0 0 8px @color4;
+          opacity: 0.7;
+          text-shadow: 0 0 15px @color4, 
+                       0 0 30px @color4;
         }
         100% {
           opacity: 1;
-          box-shadow: 0 0 2px @color4;
+          text-shadow: 0 0 8px @color4, 
+                       0 0 15px @color4;
         }
       }
 
@@ -575,11 +650,11 @@
         background-color: alpha(@background, 0.95);
         margin: 0 2px;
         border-radius: 10px;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
         transition: all 0.3s ease;
         color: @color5;
-        text-shadow: 0 0 5px @color5,
-                     0 0 10px alpha(@color5, 0.5);
+        text-shadow: 0 0 10px @color5,
+                     0 0 20px alpha(@color5, 0.8);
+        border: 1px solid alpha(@color5, 0.1);
       }
 
       #custom-previous,
@@ -587,12 +662,27 @@
         font-size: 18px;
         font-weight: bold;
         padding: 0 10px;
-        animation: text-neon-pulse 1.5s infinite alternate;
+        animation: control-text-neon-pulse 2s infinite alternate;
+      }
+
+      @keyframes control-text-neon-pulse {
+        0% {
+          text-shadow: 0 0 8px @color5, 
+                       0 0 15px @color5;
+        }
+        100% {
+          text-shadow: 0 0 15px @color5, 
+                       0 0 25px @color5, 
+                       0 0 40px @color5;
+        }
       }
 
       #custom-previous:hover,
       #custom-next:hover {
         background-color: alpha(@color4, 0.15);
+        text-shadow: 0 0 15px @color4,
+                     0 0 30px @color4;
+        border: 1px solid alpha(@color4, 0.3);
       }
 
       #mpris {
@@ -603,40 +693,39 @@
 
       #mpris.playing {
         border-bottom: 2px solid @color2;
-        text-shadow: 0 0 5px @color2, 0 0 8px @color2;
+        text-shadow: 0 0 12px @color2, 
+                     0 0 25px @color2;
         animation: mpris-text-pulse 2s infinite alternate;
       }
 
       #mpris.paused {
         border-bottom: 2px solid @color3;
         color: alpha(@color6, 0.7);
-        text-shadow: 0 0 3px @color3;
+        text-shadow: 0 0 8px @color3;
       }
 
       #mpris.stopped {
         color: @color8;
+        text-shadow: 0 0 8px @color8,
+                     0 0 15px alpha(@color8, 0.7);
       }
 
       #mpris:hover {
         background-color: alpha(@color6, 0.15);
-        text-shadow: 0 0 8px @color6, 0 0 12px @color6;
-      }
-
-      @keyframes text-neon-pulse {
-        from {
-          text-shadow: 0 0 2px @color4, 0 0 4px @color4;
-        }
-        to {
-          text-shadow: 0 0 5px @color4, 0 0 10px @color4, 0 0 15px @color4;
-        }
+        text-shadow: 0 0 15px @color6, 
+                     0 0 30px @color6;
+        border: 1px solid alpha(@color6, 0.3);
       }
 
       @keyframes mpris-text-pulse {
-        from {
-          text-shadow: 0 0 2px @color2, 0 0 4px @color2;
+        0% {
+          text-shadow: 0 0 8px @color2, 
+                       0 0 15px @color2;
         }
-        to {
-          text-shadow: 0 0 5px @color2, 0 0 10px @color2, 0 0 15px @color2;
+        100% {
+          text-shadow: 0 0 15px @color2, 
+                       0 0 25px @color2, 
+                       0 0 40px @color2;
         }
       }
     '';
