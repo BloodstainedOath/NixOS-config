@@ -1,17 +1,15 @@
 { config, pkgs, ... }:
 
 {
-  # Enable fastfetch and install the package
-  home.packages = with pkgs; [
-    fastfetch
-  ];
-
   # Create fastfetch configuration
   xdg.configFile."fastfetch/config.jsonc".text = ''
     {
       "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
       "logo": {
-        "source": "auto",
+        "source": "`find $HOME/Pictures/icons -type f | shuf -n 1`",
+        "type": "auto",
+        "width": 35,
+        "height": 20,
         "padding": {
           "top": 1,
           "left": 2
@@ -35,7 +33,12 @@
         "uptime",
         "packages",
         "shell",
-        "display",
+        "break",
+        "cpu",
+        "gpu",
+        "memory",
+        "disk",
+        "break",
         "de",
         "wm",
         "wmtheme",
@@ -43,26 +46,10 @@
         "icons",
         "font",
         "cursor",
-        "terminal",
-        "terminalfont",
-        "cpu",
-        "gpu",
-        "memory",
-        "swap",
-        "disk",
-        "localip",
-        "battery",
-        "poweradapter",
-        "locale",
         "break",
-        "colors"
+        "terminal",
+        "terminalfont"
       ]
     }
   '';
-
-  # Optional: Create shell aliases for fastfetch
-  home.shellAliases = {
-    ff = "fastfetch";
-    neofetch = "fastfetch";  # Replace neofetch if you used it before
-  };
 }
