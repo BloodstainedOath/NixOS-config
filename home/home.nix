@@ -10,6 +10,7 @@
     ./modules/swaync/swaync.nix
     ./modules/wlogout/wlogout.nix
     ./modules/hyprland/hyprlock.nix
+    ./modules/fastfetch/fastfetch.nix
   ];
 
   home.username = "hunter";
@@ -20,7 +21,6 @@
     firefox-devedition
     vlc
     eog
-    nautilus
     waypaper
     swww
     wofi
@@ -50,6 +50,7 @@
     kdePackages.dolphin
     materialgram
     vivaldi
+    fastfetch
   ];
 
   home.file = {

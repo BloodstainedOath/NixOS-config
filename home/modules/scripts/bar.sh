@@ -8,7 +8,7 @@ pkill swaync
 sleep 0.5
 
 # Run your wallpaper copying script
-~/.config/waypaper/copy-wallpaper.sh
+$HOME/.dots/home/modules/scripts/copy-wallpaper.sh
 
 # Launch new instances
 waybar &
