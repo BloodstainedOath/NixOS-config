@@ -97,10 +97,11 @@
    electron_36
    neofetch
    polkit_gnome
+   bibata-cursors
  ];
   environment.variables = {
     XCURSOR_THEME = "Bibata-Rainbow-Modern";
-    XCURSOR_SIZE = "24"; # Optional: set cursor size (16, 24, 32, 48)
+    XCURSOR_SIZE = "24";
   };
 
   i18n.defaultLocale = "en_US.UTF-8";

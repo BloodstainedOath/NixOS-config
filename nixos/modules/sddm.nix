@@ -8,6 +8,10 @@
   General = {
     LogLevel = "debug";
   };
+  X11 = {
+        CursorTheme = "Bibata-Rainbow-Modern";
+        CursorSize = 24;
+      };
 };
 
 

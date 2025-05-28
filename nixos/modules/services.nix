@@ -13,7 +13,7 @@
   # Enable Bluetooth
   hardware.bluetooth = {
     enable = true;
-    powerOnBoot = true;  # Optional but useful
+    powerOnBoot = false;  # Optional but useful
   };
 
   # Enable the Bluetooth service

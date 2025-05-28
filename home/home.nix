@@ -49,14 +49,10 @@
     libreoffice-qt6-fresh
     kdePackages.dolphin
     materialgram
+    vivaldi
   ];
 
   home.file = {
-  };
-
-  home.sessionVariables = {
-    XCURSOR_THEME = "Bibata-Rainbow-Modern";
-    XCURSOR_SIZE = "24";
   };
 
    programs.zsh = {
@@ -100,7 +96,7 @@ iconTheme = {
     # Don't add a `package` if you installed it manually
   };
  cursorTheme = {
-    name = "bibata-cursor-rainbow-modern";
+    name = "Bibata-Rainbow-Modern";
     size = 24;
   };
 };
