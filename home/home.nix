@@ -11,6 +11,7 @@
     ./modules/wlogout/wlogout.nix
     ./modules/hyprland/hyprlock.nix
     ./modules/fastfetch/fastfetch.nix
+    ./modules/neofecth/neofetch.nix
   ];
 
   home.username = "hunter";
