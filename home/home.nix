@@ -51,6 +51,8 @@
     materialgram
     vivaldi
     fastfetch
+    obs-studio
+    evince
   ];
 
   home.file = {
@@ -88,7 +90,6 @@
 gtk = {
   enable = true;
   theme.name = "Sweet-Dark";
-  # font.name = "Cinzel Decorative";
   theme.package = pkgs.sweet;
 
 
@@ -103,6 +104,7 @@ iconTheme = {
 };
 qt = {
   enable = true;
+  platformTheme.name = "gtk";
 };
 
 

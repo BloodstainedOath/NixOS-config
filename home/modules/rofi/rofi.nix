@@ -17,7 +17,7 @@
     @theme "~/.config/rofi/colors.rasi"
 
     * {
-        font:                            "Cinzel 12";
+        font:                            "Cinzel Decorative 12";
     }
 
     entry {

@@ -98,7 +98,9 @@
    electron_36
    neofetch
    polkit_gnome
+   firejail
    bibata-cursors
+   asusctl
  ];
   environment.variables = {
     XCURSOR_THEME = "Bibata-Rainbow-Modern";
@@ -108,6 +110,21 @@
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ALL = "en_US.UTF-8";
+  };
+
+  services.asusd.enable = true;
+
+  # Firewall
+  networking = {
+    nftables = {
+      enable = true;
+    };
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ ];
+      allowedUDPPorts = [ ];
+      allowPing = false;
+    };
   };
 
   system.stateVersion = "24.11";

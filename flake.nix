@@ -72,6 +72,22 @@
         echo "🚀 C, C++, and Rust dev shell ready"
       '';
     };
+
+          js = pkgs.mkShell {
+        buildInputs = [
+          pkgs.nodejs_20  # or nodejs_18, depending on compatibility
+          pkgs.yarn
+          pkgs.eslint
+          pkgs.nodePackages.typescript
+        ];
+
+        shellHook = ''
+          echo "🟨 JavaScript/Node.js dev shell ready"
+          echo "Node version: $(node -v)"
+          echo "NPM version: $(npm -v)"
+        '';
+      };
+
   };
 
   };
