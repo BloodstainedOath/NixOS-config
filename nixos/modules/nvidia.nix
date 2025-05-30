@@ -16,6 +16,7 @@
     powerManagement.enable = false; # Keep GPU always active — best performance (no power-saving)
     open = false;                   # Use proprietary driver, not the open-source variant
     nvidiaSettings = true;          # Installs `nvidia-settings` GUI tool for manual tweaking
+    nvidiaPersistenced = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable; # Use the stable driver
   };
 

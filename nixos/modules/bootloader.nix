@@ -19,7 +19,8 @@ in
 {
   boot = {
     kernelParams = [ "quiet" ];
-    blacklistedKernelModules = [ "uvcvideo" "mt7921e" ];
+    kernelPackages = pkgs.linuxPackages_6_14;
+    blacklistedKernelModules = [ "uvcvideo" ];
 
     loader = {
 
