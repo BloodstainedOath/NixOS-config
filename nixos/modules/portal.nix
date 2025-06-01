@@ -10,5 +10,9 @@
       pkgs.xdg-desktop-portal-gtk 
       pkgs.xdg-desktop-portal-hyprland
       ];
+      config.hyprland = {
+        default = [ "wlr" "gtk" ];
+      };
   };
+  
 }

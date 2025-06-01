@@ -53,6 +53,8 @@
     fastfetch
     obs-studio
     evince
+    thunderbird
+    nautilus
   ];
 
   home.file = {
@@ -84,6 +86,7 @@
     alias ll='ls -al'
     alias up='cd /home/hunter/.dots && nix flake update'
     alias update='cd /home/hunter/.dots && sudo nixos-rebuild switch --flake .'
+    alias python='cd /home/hunter/.dots && nix develop .#python --command zsh'
   '';
 };
 

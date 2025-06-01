@@ -71,7 +71,6 @@
    gvfs
    mtpfs
    kitty
-   nautilus
    kdePackages.kate
    zip
    unzip
