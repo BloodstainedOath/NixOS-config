@@ -49,7 +49,6 @@
     libreoffice-qt6-fresh
     kdePackages.dolphin
     materialgram
-    vivaldi
     fastfetch
     obs-studio
     evince
@@ -86,7 +85,7 @@
     alias ll='ls -al'
     alias up='cd /home/hunter/.dots && nix flake update'
     alias update='cd /home/hunter/.dots && sudo nixos-rebuild switch --flake .'
-    alias python='cd /home/hunter/.dots && nix develop .#python --command zsh'
+    alias py='cd /home/hunter/.dots && nix develop .#python --command zsh'
   '';
 };
 

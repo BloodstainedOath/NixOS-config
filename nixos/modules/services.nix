@@ -10,6 +10,8 @@
 
   services.gvfs.enable = true;
 
+  services.flatpak.enable = true;
+
   # Enable Bluetooth
   hardware.bluetooth = {
     enable = true;

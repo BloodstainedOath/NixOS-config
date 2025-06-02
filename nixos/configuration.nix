@@ -100,6 +100,8 @@
    firejail
    bibata-cursors
    asusctl
+   flatpak
+   flatpak-builder
  ];
   environment.variables = {
     XCURSOR_THEME = "Bibata-Rainbow-Modern";
