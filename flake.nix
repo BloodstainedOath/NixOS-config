@@ -66,7 +66,7 @@
           pkgs.clang
           pkgs.rustc
           pkgs.cargo
-          pkgs.make
+          pkgs.cmake
         ];
       shellHook = ''
         echo "🚀 C, C++, and Rust dev shell ready"
