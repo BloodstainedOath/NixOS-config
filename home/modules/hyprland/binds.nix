@@ -121,9 +121,13 @@
       ######## Custom Apps #########
       ##############################
 
+      # Games
       "$mainMod, H, exec, heroic"
       "$mainMod, U, exec, upscayl"
+
+      # Multimedia
       "$mainMod, Y, exec, youtube-music"
+      "$mainMod CTRL, S, exec, spotify"
 
       # Clipboard
       "$mainMod, V, exec, sh -c 'cliphist list | wofi -dmenu | cliphist decode | wl-copy'"

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -11,6 +11,7 @@
     ./modules/wlogout/wlogout.nix
     ./modules/hyprland/hyprlock.nix
     ./modules/neofetch/neofetch.nix
+    inputs.spicetify-nix.homeManagerModules.default
   ];
 
   home.username = "hunter";
@@ -41,7 +42,6 @@
     heroic
     wineWowPackages.stable
     winetricks
-    protonup-qt
     qbittorrent
     protonvpn-gui
     vesktop
@@ -53,6 +53,7 @@
     evince
     thunderbird
     nautilus
+    spotdl
   ];
 
   home.file = {
@@ -104,11 +105,27 @@ iconTheme = {
     size = 24;
   };
 };
+
 qt = {
   enable = true;
   platformTheme.name = "gtk";
 };
 
+programs.spicetify =
+let
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+in
+{
+  enable = true;
+  theme = spicePkgs.themes.defaultDynamic;
+  enabledExtensions = with spicePkgs.extensions; [
+    adblock
+    shuffle
+    beautifulLyrics
+    hidePodcasts
+    betterGenres
+  ];
+};
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
