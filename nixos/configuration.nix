@@ -64,45 +64,61 @@
    services.printing.enable = true;
 
   # $ nix search wget
- environment.systemPackages = with pkgs; [
-   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-   wget
-   git
-   gvfs
-   mtpfs
-   kitty
-   kdePackages.kate
-   zip
-   unzip
-   lsd
-   bat
-   zsh-autosuggestions
-   zsh-syntax-highlighting
-   home-manager
-   nurl
-   sddm-sugar-dark
-   btop
-   fontfinder
-   font-manager
-   (callPackage ./custom-packages/sddm-theme.nix {}).sddm-theme
-   xdg-desktop-portal
-   xdg-desktop-portal-gtk
-   xdg-desktop-portal-hyprland
-   libnotify
-   appimage-run
-   vscodium
-   brightnessctl
-   wev
-   neovim
-   electron_36
-   neofetch
-   polkit_gnome
-   firejail
-   bibata-cursors
-   asusctl
-   flatpak
-   flatpak-builder
- ];
+environment.systemPackages = with pkgs; [
+  # Core System Tools
+  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  wget
+  git
+  zip
+  unzip
+  home-manager
+  nurl
+
+  # Terminal & Shell
+  kitty
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  neovim
+
+  # File Management & Utilities
+  gvfs
+  mtpfs
+  lsd
+  bat
+  btop
+  neofetch
+
+  # Development & Editors
+  kdePackages.kate
+  vscodium
+  electron_36
+
+  # Desktop Environment & Theming
+  sddm-sugar-dark
+  (callPackage ./custom-packages/sddm-theme.nix {}).sddm-theme
+  xdg-desktop-portal
+  xdg-desktop-portal-gtk
+  xdg-desktop-portal-hyprland
+  libnotify
+  polkit_gnome
+  bibata-cursors
+
+  # Fonts & Display
+  fontfinder
+  font-manager
+  brightnessctl
+  wev
+
+  # Applications & Package Management
+  appimage-run
+  flatpak
+  flatpak-builder
+
+  # Security & Hardware
+  firejail
+  asusctl
+];
+
   environment.variables = {
     XCURSOR_THEME = "Bibata-Rainbow-Modern";
     XCURSOR_SIZE = "24";

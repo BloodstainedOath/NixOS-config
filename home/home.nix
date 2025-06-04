@@ -18,43 +18,54 @@
   home.homeDirectory = "/home/hunter";
 
   home.packages = with pkgs; [
-    sweet
-    vlc
-    eog
+    # Hyprland/Wayland Desktop Environment
     waypaper
     swww
     wofi
     waybar
     hyprshot
-    pavucontrol
+    hyprlock
     swaynotificationcenter
     wallust
-    imagemagick
-    rofi
     wl-clipboard
     cliphist
-    playerctl
-    gamemode
+    rofi
+
+    # Multimedia & Graphics
+    vlc
+    eog
+    imagemagick
+    obs-studio
     upscayl
     youtube-music
+    playerctl
+    pavucontrol
+
+    # Gaming
+    gamemode
     gamescope
     heroic
     wineWowPackages.stable
     winetricks
+
+    # Internet & Communication
+    inputs.zen-browser.packages."${system}".default
     qbittorrent
     protonvpn-gui
     vesktop
-    hyprlock
-    libreoffice-qt6-fresh
     materialgram
-    fastfetch
-    obs-studio
-    evince
     thunderbird
+
+    # Productivity & Office
+    libreoffice-qt6-fresh
+    evince
     nautilus
+
+    # System Utilities & CLI Tools
+    sweet
+    fastfetch
     spotdl
     fzf
-    inputs.zen-browser.packages."${system}".default
   ];
 
    programs.zsh = {
