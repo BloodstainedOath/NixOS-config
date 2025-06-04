@@ -63,46 +63,12 @@
   # Enable CUPS to print documents.
    services.printing.enable = true;
 
-  # $ nix search wget
- environment.systemPackages = with pkgs; [
-   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-   wget
-   git
-   gvfs
-   mtpfs
-   kitty
-   kdePackages.kate
-   zip
-   unzip
-   lsd
-   bat
-   zsh-autosuggestions
-   zsh-syntax-highlighting
-   home-manager
-   nurl
-   sddm-sugar-dark
-   btop
-   fontfinder
-   font-manager
-   (callPackage ./custom-packages/sddm-theme.nix {}).sddm-theme
-   xdg-desktop-portal
-   xdg-desktop-portal-gtk
-   xdg-desktop-portal-hyprland
-   libnotify
-   appimage-run
-   vscodium
-   brightnessctl
-   wev
-   neovim
-   electron_36
-   neofetch
-   polkit_gnome
-   firejail
-   bibata-cursors
-   asusctl
-   flatpak
-   flatpak-builder
- ];
+   environment.systemPackages = import ./custom-packages/packages.nix {
+      inherit pkgs;
+      callPackage = pkgs.callPackage;
+    };
+
+
   environment.variables = {
     XCURSOR_THEME = "Bibata-Rainbow-Modern";
     XCURSOR_SIZE = "24";

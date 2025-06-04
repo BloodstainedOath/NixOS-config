@@ -1,5 +1,3 @@
-# Add this to your configuration.nix
-
 { pkgs, ... }:
 
 let

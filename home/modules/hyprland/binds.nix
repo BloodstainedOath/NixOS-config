@@ -7,9 +7,8 @@
     "$terminal" = "kitty";
     "$filemanager" = "nautilus";
     "$menu" = "$HOME/.config/rofi/launcher.sh";
-    "$browser" = "firefox-devedition";
+    "$browser" = "zen-beta";
     "$codeEditor" = "codium";
-    "$second_browser" = "Vivaldi-stable";
 
     bind = [
       # Window Management
@@ -92,7 +91,7 @@
 
       # Browsers and communication
       "$mainMod, B, exec, $browser"
-      "$mainMod SHIFT, B, exec, $second_browser"
+      "$mainMod SHIFT, B, exec, $browser2"
       "$mainMod, D, exec, vesktop"
 
       # Development and productivity

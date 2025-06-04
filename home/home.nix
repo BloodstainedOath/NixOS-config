@@ -19,7 +19,6 @@
 
   home.packages = with pkgs; [
     sweet
-    firefox-devedition
     vlc
     eog
     waypaper
@@ -54,10 +53,9 @@
     thunderbird
     nautilus
     spotdl
+    fzf
+    inputs.zen-browser.packages."${system}".default
   ];
-
-  home.file = {
-  };
 
    programs.zsh = {
   enable = true;
@@ -82,7 +80,7 @@
     # Aliases
     alias ls='lsd'
     alias cat='bat'
-    alias ll='ls -al'
+    alias fzf='fzf --exact'
     alias up='cd /home/hunter/.dots && nix flake update'
     alias update='cd /home/hunter/.dots && sudo nixos-rebuild switch --flake .'
     alias py='cd /home/hunter/.dots && nix develop .#python --command zsh'
