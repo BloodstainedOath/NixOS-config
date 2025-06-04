@@ -63,7 +63,6 @@
 
     # System Utilities & CLI Tools
     sweet
-    fastfetch
     spotdl
     fzf
   ];
