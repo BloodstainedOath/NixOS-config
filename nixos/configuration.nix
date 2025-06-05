@@ -53,9 +53,8 @@
 
 
    networking.hostName = "yharnam"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+
+   networking.networkmanager.enable = true;
 
   # Set your time zone.
    time.timeZone = "Asia/Kolkata";
@@ -66,7 +65,7 @@
   # $ nix search wget
 environment.systemPackages = with pkgs; [
   # Core System Tools
-  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  vim
   wget
   git
   zip
@@ -119,11 +118,13 @@ environment.systemPackages = with pkgs; [
   asusctl
 ];
 
+  # Cursor
   environment.variables = {
     XCURSOR_THEME = "Bibata-Rainbow-Modern";
     XCURSOR_SIZE = "24";
   };
 
+  # Locale
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ALL = "en_US.UTF-8";

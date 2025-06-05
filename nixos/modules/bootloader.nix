@@ -30,7 +30,7 @@ in
         device = "nodev";
 
         # ✨ Pick your favorite theme here
-        theme = raidenTheme;
+        theme = sekiroTheme;
       };
 
       efi.canTouchEfiVariables = true;
