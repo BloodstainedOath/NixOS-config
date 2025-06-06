@@ -27,6 +27,7 @@
       # Opacity rules
       "opacity 0.90 0.90, class:^(org.gnome.Nautilus)$"
       "opacity 0.80 0.90, class:^(kitty)$"
+      "opacity 0.90 0.90, class:^(codium)$"
 
       # Floating btop in kitty
       "float, class:^(kitty)$, title:^(btop)$"

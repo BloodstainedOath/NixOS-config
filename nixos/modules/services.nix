@@ -1,5 +1,5 @@
 # /etc/nixos/modules/services.nix
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 

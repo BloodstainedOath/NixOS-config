@@ -62,9 +62,11 @@
     nautilus
 
     # System Utilities & CLI Tools
-    sweet
     spotdl
     fzf
+
+    # Gtk Themes
+    sweet
   ];
 
   programs.zsh = {

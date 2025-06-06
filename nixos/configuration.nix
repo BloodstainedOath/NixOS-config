@@ -52,15 +52,15 @@
 
 
 
-   networking.hostName = "yharnam"; # Define your hostname.
+  networking.hostName = "yharnam"; # Define your hostname.
 
-   networking.networkmanager.enable = true;
+  networking.networkmanager.enable = true;
 
   # Set your time zone.
-   time.timeZone = "Asia/Kolkata";
+  time.timeZone = "Asia/Kolkata";
 
   # Enable CUPS to print documents.
-   services.printing.enable = true;
+  services.printing.enable = true;
 
   # $ nix search wget
 environment.systemPackages = with pkgs; [
@@ -93,17 +93,14 @@ environment.systemPackages = with pkgs; [
   electron_36
 
   # Desktop Environment & Theming
-  sddm-sugar-dark
   (callPackage ./custom-packages/sddm-theme.nix {}).sddm-theme
   xdg-desktop-portal
   xdg-desktop-portal-gtk
   xdg-desktop-portal-hyprland
   libnotify
   polkit_gnome
-  bibata-cursors
 
   # Fonts & Display
-  fontfinder
   font-manager
   brightnessctl
   wev
