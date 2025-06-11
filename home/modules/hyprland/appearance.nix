@@ -61,6 +61,8 @@
       # font_family = "Cinzel";
       animate_manual_resizes = true;
       vfr = false;
+      force_default_wallpaper = 0;
+      disable_hyprland_logo = true;
     };
 
     env = [

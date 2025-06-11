@@ -42,6 +42,7 @@
             pkgs.gobject-introspection
             (pkgs.python3.withPackages (ps: with ps; [
               pygobject3
+              tkinter
               pip
               pillow
               requests
