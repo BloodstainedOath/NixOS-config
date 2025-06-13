@@ -27,6 +27,7 @@
     hyprlock
     swaynotificationcenter
     wallust
+    matugen
     wl-clipboard
     cliphist
     rofi

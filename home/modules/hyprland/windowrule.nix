@@ -13,6 +13,8 @@
       "float, center, title:^(Library)(.*)$"
       "float, center, title:^(File Upload)(.*)$"
       "float, center, title:^(Select App)(.*)$"
+      "float, center, title:^(Select Image) (.*)$"
+      "float, center, title:^(Select Executable) (.*)$"
 
       # Picture-in-Picture
       "float, pin, move 69.5% 4%, title:^(Picture-in-Picture)$"
