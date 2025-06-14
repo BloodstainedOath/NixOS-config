@@ -6,7 +6,7 @@
       background = [
         {
           monitor = "";
-          path = "$HOME/Pictures/Knight/Bloodborne/wallhaven_d62d6j.png";
+          path = "$HOME/Pictures/Wallpapers/Bloodborne/wallhaven_d62d6j.png";
           blur_passes = 0;
           contrast = 0.8916;
           brightness = 0.8172;

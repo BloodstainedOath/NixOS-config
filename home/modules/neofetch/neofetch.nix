@@ -146,7 +146,7 @@
     crop_mode="fill"
     crop_offset="center"
     image_size="300px"
-    gap=3
+    gap=2
     yoffset=0
     xoffset=0
     background_color=""
