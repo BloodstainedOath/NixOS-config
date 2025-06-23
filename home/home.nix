@@ -30,6 +30,7 @@
     wl-clipboard
     cliphist
     rofi
+    hyprpicker
 
     # Multimedia & Graphics
     vlc
@@ -61,9 +62,15 @@
     evince
     nautilus
 
+    # Development & Editors
+    kdePackages.kate
+    vscodium
+    obsidian
+
     # System Utilities & CLI Tools
     spotdl
     fzf
+    yt-dlp
 
     # Gtk Themes
     sweet

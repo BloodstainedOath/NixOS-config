@@ -147,7 +147,7 @@
         };
 
         "custom/hyprpicker" = {
-          format = "";
+          format = "";
           tooltip = false;
           on-click = "hyprpicker -a";
           on-click-right = "killall hyprpicker";

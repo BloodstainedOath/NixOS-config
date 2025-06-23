@@ -88,11 +88,6 @@ environment.systemPackages = with pkgs; [
   btop
   neofetch
 
-  # Development & Editors
-  kdePackages.kate
-  vscodium
-  electron_36
-
   # Desktop Environment & Theming
   (callPackage ./custom-packages/sddm-theme.nix {}).sddm-theme
   xdg-desktop-portal
