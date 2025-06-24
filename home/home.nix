@@ -64,7 +64,6 @@
 
     # Development & Editors
     kdePackages.kate
-    vscodium
     obsidian
 
     # System Utilities & CLI Tools
@@ -141,6 +140,11 @@
         hidePodcasts
         betterGenres
       ];
+    };
+
+    programs.vscode = {
+    enable = true;
+    package = pkgs.vscodium;
     };
 
   programs.home-manager.enable = true;
