@@ -9,6 +9,7 @@
     "$menu" = "$HOME/.config/rofi/launcher.sh";
     "$browser" = "zen-beta";
     "$codeEditor" = "codium";
+    "$codeEditor2" = "code";
 
     bind = [
       # Window Management
@@ -95,7 +96,7 @@
       "$mainMod, D, exec, vesktop"
 
       # Development and productivity
-      "$mainMod SHIFT, V, exec, codium"
+      "$mainMod SHIFT, V, exec, $codeEditor2"
 
       # ScreenShot bindings
       # "$mainMod, Print, exec, flameshot full"

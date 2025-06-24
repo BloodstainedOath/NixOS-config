@@ -11,6 +11,7 @@
     ./modules/wlogout/wlogout.nix
     ./modules/hyprland/hyprlock.nix
     ./modules/neofetch/neofetch.nix
+    ./modules/ollama/ollama.nix
     inputs.spicetify-nix.homeManagerModules.default
   ];
 
@@ -144,7 +145,6 @@
 
     programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
     };
 
   programs.home-manager.enable = true;
