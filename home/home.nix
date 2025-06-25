@@ -145,6 +145,18 @@
 
     programs.vscode = {
     enable = true;
+    package = pkgs.vscodium;
+    profiles.default.extensions = with pkgs.vscode-extensions; [
+    ms-python.python
+    esbenp.prettier-vscode
+    llvm-vs-code-extensions.vscode-clangd
+    pkief.material-icon-theme
+    ritwickdey.liveserver
+    formulahendry.code-runner
+    oderwat.indent-rainbow
+    jnoortheen.nix-ide
+    continue.continue
+      ];
     };
 
   programs.home-manager.enable = true;

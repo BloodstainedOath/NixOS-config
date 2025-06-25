@@ -64,6 +64,9 @@
     # libvulkan                  # Vulkan loader library (already pulled in by most apps, but explicit is safe)
     vkbasalt                   # Optional: Vulkan post-processing layer (e.g., sharpening, FXAA)
     mangohud                   # Vulkan/OpenGL overlay for performance stats (FPS, CPU/GPU load)
+    nvidia-container-toolkit
+    libnvidia-container
+    cudaPackages.cudatoolkit
   ];
 
   # Optional: Enable this block if you want to *force NVIDIA GPU always-on*

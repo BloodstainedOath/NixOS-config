@@ -3,6 +3,6 @@
 {
   services.ollama = {
     enable = true;
-    accelleration = "cuda";
+    acceleration = "cuda";
   };
 }
