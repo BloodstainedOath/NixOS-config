@@ -36,10 +36,10 @@
 
       devShells.${system} = {
         python = pkgs.mkShell {
-          buildInputs = [
-            pkgs.python3
-            pkgs.gtk3
-            pkgs.gobject-introspection
+          buildInputs = with pkgs; [
+            python3
+            gtk3
+            gobject-introspection
             (pkgs.python3.withPackages (ps: with ps; [
               pygobject3
               tkinter
@@ -54,10 +54,10 @@
         };
 
         java = pkgs.mkShell {
-          buildInputs = [
-            pkgs.openjdk
-            pkgs.maven
-            pkgs.gradle
+          buildInputs = with pkgs; [
+            openjdk
+            maven
+            gradle
           ];
           shellHook = ''
             echo "☕ Java dev shell ready"
@@ -65,12 +65,12 @@
         };
 
         cppRust = pkgs.mkShell {
-          buildInputs = [
-            pkgs.gcc
-            pkgs.clang
-            pkgs.rustc
-            pkgs.cargo
-            pkgs.cmake
+          buildInputs = with pkgs; [
+            gcc
+            clang
+            rustc
+            cargo
+            cmake
           ];
           shellHook = ''
             echo "🚀 C, C++, and Rust dev shell ready"
@@ -78,11 +78,11 @@
         };
 
         js = pkgs.mkShell {
-          buildInputs = [
-            pkgs.nodejs_20
-            pkgs.yarn
-            pkgs.eslint
-            pkgs.nodePackages.typescript
+          buildInputs = with pkgs; [
+            nodejs
+            yarn
+            eslint
+            nodePackages.typescript
           ];
           shellHook = ''
             echo "🟨 JavaScript/Node.js dev shell ready"

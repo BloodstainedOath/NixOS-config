@@ -5,7 +5,7 @@
   boot.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
 
   # 📦 Use the stable proprietary NVIDIA driver package
-  boot.extraModulePackages = [ config.boot.kernelPackages.nvidiaPackages.stable ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.nvidiaPackages.beta ];
 
   # 🖥️ Instruct X/Wayland to use NVIDIA instead of open-source drivers
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -19,7 +19,7 @@
     nvidiaSettings = true;          # Installs `nvidia-settings` GUI tool for manual tweaking
     nvidiaPersistenced = true;
     videoAcceleration = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable; # Use the stable driver
+    package = config.boot.kernelPackages.nvidiaPackages.beta; # Use the stable driver
   };
 
   # 🛑 Prevent conflict with Nouveau (open-source NVIDIA driver)

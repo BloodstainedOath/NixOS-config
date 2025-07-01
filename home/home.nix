@@ -32,6 +32,7 @@
     cliphist
     rofi
     hyprpicker
+    hyprsunset
 
     # Multimedia & Graphics
     vlc
@@ -56,6 +57,7 @@
     protonvpn-gui
     vesktop
     materialgram
+    ayugram-desktop
     thunderbird
 
     # Productivity & Office
@@ -64,8 +66,8 @@
     nautilus
 
     # Development & Editors
-    kdePackages.kate
     obsidian
+    gedit
 
     # System Utilities & CLI Tools
     spotdl
@@ -74,6 +76,10 @@
 
     # Gtk Themes
     sweet
+
+    # misc
+    gallery-dl
+    instaloader
   ];
 
   programs.zsh = {
@@ -147,17 +153,18 @@
     enable = true;
     package = pkgs.vscodium;
     profiles.default.extensions = with pkgs.vscode-extensions; [
-    ms-python.python
-    esbenp.prettier-vscode
-    llvm-vs-code-extensions.vscode-clangd
-    pkief.material-icon-theme
-    ritwickdey.liveserver
-    formulahendry.code-runner
-    oderwat.indent-rainbow
-    jnoortheen.nix-ide
-    continue.continue
-      ];
-    };
+      ms-python.python
+      esbenp.prettier-vscode
+      llvm-vs-code-extensions.vscode-clangd
+      pkief.material-icon-theme
+      ritwickdey.liveserver
+      formulahendry.code-runner
+      oderwat.indent-rainbow
+      jnoortheen.nix-ide
+      continue.continue
+    ];
+  };
+
 
   programs.home-manager.enable = true;
 
