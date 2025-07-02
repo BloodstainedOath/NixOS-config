@@ -4,7 +4,7 @@
   # 🚀 Load the NVIDIA kernel module at boot — required for proper driver function
   boot.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
 
-  # 📦 Use the stable proprietary NVIDIA driver package
+  # 📦 Use the beta proprietary NVIDIA driver package
   boot.extraModulePackages = [ config.boot.kernelPackages.nvidiaPackages.beta ];
 
   # 🖥️ Instruct X/Wayland to use NVIDIA instead of open-source drivers
@@ -19,7 +19,7 @@
     nvidiaSettings = true;          # Installs `nvidia-settings` GUI tool for manual tweaking
     nvidiaPersistenced = true;
     videoAcceleration = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta; # Use the stable driver
+    package = config.boot.kernelPackages.nvidiaPackages.beta; # Use the beta driver
   };
 
   # 🛑 Prevent conflict with Nouveau (open-source NVIDIA driver)
@@ -53,15 +53,12 @@
 
   # 🔍 Useful tools for performance monitoring and control
   environment.systemPackages = with pkgs; [
-    nvtopPackages.nvidia  # Real-time GPU usage monitor
-    # nvidia-settings       # GUI to control NVIDIA GPU settings (fan, clocks, etc.)
     glxinfo               # Check OpenGL info (e.g., GPU renderer)
     btop                  # Modern system resource monitor
     lm_sensors            # CPU temps, fan speeds, etc.
     vulkan-loader              # Core Vulkan runtime (must-have)
     vulkan-tools               # Tools like `vulkaninfo` and `cube`
     vulkan-validation-layers   # Helps validate Vulkan app behavior (useful for devs, can be skipped if not needed)
-    # libvulkan                  # Vulkan loader library (already pulled in by most apps, but explicit is safe)
     vkbasalt                   # Optional: Vulkan post-processing layer (e.g., sharpening, FXAA)
     mangohud                   # Vulkan/OpenGL overlay for performance stats (FPS, CPU/GPU load)
     nvidia-container-toolkit

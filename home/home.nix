@@ -126,6 +126,9 @@
       name = "Bibata-Rainbow-Modern";
       size = 24;
     };
+    font = {
+      name = "Noto Serif";
+    };
   };
 
   qt = {
