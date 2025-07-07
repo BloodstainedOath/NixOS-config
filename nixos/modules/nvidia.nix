@@ -13,7 +13,7 @@
   # ⚙️ NVIDIA driver configuration
   hardware.nvidia = {
     modesetting.enable = true;      # Enables Kernel Mode Setting (KMS) — necessary for Wayland
-    powerManagement.enable = true; # Keep GPU always active — best performance (no power-saving)
+    powerManagement.enable = false; # Keep GPU always active — best performance (no power-saving)
     powerManagement.finegrained = false;
     open = false;                   # Use proprietary driver, not the open-source variant
     nvidiaSettings = true;          # Installs `nvidia-settings` GUI tool for manual tweaking
@@ -47,8 +47,6 @@
   # 🧱 Enables NVIDIA's Direct Rendering Manager for smooth Wayland/X11 operation
   boot.kernelParams = [
     "nvidia-drm.modeset=1"
-    "acpi_osi=Linux"
-    "pcie_aspm=off"
   ];
 
   # 🔍 Useful tools for performance monitoring and control
@@ -61,8 +59,6 @@
     vulkan-validation-layers   # Helps validate Vulkan app behavior (useful for devs, can be skipped if not needed)
     vkbasalt                   # Optional: Vulkan post-processing layer (e.g., sharpening, FXAA)
     mangohud                   # Vulkan/OpenGL overlay for performance stats (FPS, CPU/GPU load)
-    nvidia-container-toolkit
-    libnvidia-container
     cudaPackages.cudatoolkit
   ];
 

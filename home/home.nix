@@ -11,7 +11,6 @@
     ./modules/wlogout/wlogout.nix
     ./modules/hyprland/hyprlock.nix
     ./modules/neofetch/neofetch.nix
-    ./modules/ollama/ollama.nix
     inputs.spicetify-nix.homeManagerModules.default
   ];
 
@@ -58,7 +57,6 @@
     vesktop
     materialgram
     ayugram-desktop
-    thunderbird
 
     # Productivity & Office
     libreoffice-qt6-fresh
@@ -154,7 +152,7 @@
 
     programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    # package=pkgs.vscodium;
     profiles.default.extensions = with pkgs.vscode-extensions; [
       ms-python.python
       esbenp.prettier-vscode

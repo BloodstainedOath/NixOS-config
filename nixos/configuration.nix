@@ -17,6 +17,7 @@
       ./modules/bootloader.nix
       ./modules/sddm.nix
       ./modules/fonts.nix
+      ./modules/ollama.nix
       ./custom-packages/cursor.nix
       inputs.home-manager.nixosModules.home-manager
     ];
@@ -52,9 +53,17 @@
 
 
 
-  networking.hostName = "yharnam"; # Define your hostname.
-
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "yharnam";
+    nameservers = [
+      "9.9.9.9"
+      "1.1.1.1"
+    ];
+    networkmanager = {
+      enable = true;
+      insertNameservers = [ "9.9.9.9" "1.1.1.1" ];
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
