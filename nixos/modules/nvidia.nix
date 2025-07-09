@@ -13,7 +13,7 @@
   # ⚙️ NVIDIA driver configuration
   hardware.nvidia = {
     modesetting.enable = true;      # Enables Kernel Mode Setting (KMS) — necessary for Wayland
-    powerManagement.enable = false; # Keep GPU always active — best performance (no power-saving)
+    powerManagement.enable = true; # Keep GPU always active — best performance (no power-saving)
     powerManagement.finegrained = false;
     open = false;                   # Use proprietary driver, not the open-source variant
     nvidiaSettings = true;          # Installs `nvidia-settings` GUI tool for manual tweaking

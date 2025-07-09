@@ -2,104 +2,90 @@
 {
   wayland.windowManager.hyprland = {
     settings = {
-      # Define eldritch bezier curves inspired by dark souls
+      # Define mystical bezier curves inspired by arcane magic
       bezier = [
-        # === CURSED ESSENCE CURVES ===
-        "cursed, 0.25, 0.46, 0.45, 0.94"      # Dark magic essence
-        "hollow, 0.55, 0.085, 0.68, 0.53"     # Hollow, empty souls
-        "corrupt, 0.68, -0.55, 0.265, 1.55"   # Corruption spreading
-        "tainted, 0.23, 1, 0.32, 1"           # Tainted by darkness
-        "void, 0.16, 1, 0.3, 1"               # Abyssal void magic
+        # === ELEMENTAL ESSENCE CURVES ===
+        "ethereal, 0.22, 1, 0.36, 1"          # Air - light, weightless movement
+        "arcane, 0.25, 0.46, 0.45, 0.94"      # Pure magical energy
+        "celestial, 0.23, 1, 0.32, 1"         # Heavenly, divine motion
+        "shadow, 0.16, 1, 0.3, 1"             # Dark magic, stealthy
+        "crystal, 0.25, 0.1, 0.25, 1"         # Sharp, crystalline precision
         
-        # === BLOOD & BONE MAGIC ===
-        "blood, 0.215, 0.61, 0.355, 1"        # Blood magic manifestation
-        "bone, 0.25, 0.1, 0.25, 1"            # Skeletal precision
-        "flesh, 0.4, 0, 0.2, 1"               # Flesh magic corruption
-        "decay, 0.7, 0, 0.2, 1"               # Rotting, decaying
-        "visceral, 0.6, 0.04, 0.98, 0.335"    # Visceral, brutal magic
+        # === MYSTICAL MANIFESTATION ===
+        "manifest, 0.215, 0.61, 0.355, 1"     # Spells materializing
+        "summon, 0.34, 1.56, 0.64, 1"         # Entities appearing with power
+        "banish, 0.55, 0.085, 0.68, 0.53"     # Sending to other realms
+        "teleport, 0.68, -0.55, 0.265, 1.55"  # Instant magical transport
+        "phase, 0.4, 0, 0.2, 1"               # Phasing between dimensions
         
-        # === ELDRITCH HORRORS ===
-        "eldritch, 0.68, -0.6, 0.32, 1.6"     # Cosmic horror with unease
-        "madness, 0.175, 0.885, 0.32, 1.275"  # Sanity-breaking curves
-        "nightmare, 0.77, 0, 0.175, 1"        # Nightmarish transitions
-        "terror, 0.25, 0.8, 0.25, 1"          # Creeping terror
-        "dread, 0.6, 0.04, 0.98, 0.335"       # Building dread
+        # === ENCHANTED INTERACTIONS ===
+        "enchant, 0.68, -0.6, 0.32, 1.6"      # Magical enhancement with bounce
+        "bewitch, 0.175, 0.885, 0.32, 1.275"  # Mesmerizing charm
+        "glamour, 0.77, 0, 0.175, 1"          # Illusion magic
+        "charm, 0.25, 0.8, 0.25, 1"           # Gentle enchantment
+        "hex, 0.6, 0.04, 0.98, 0.335"         # Dark curse magic
         
-        # === DARK COVENANT MAGIC ===
-        "covenant, 0.445, 0.05, 0.55, 0.95"   # Dark covenant rituals
-        "hex, 0.55, 0.055, 0.675, 0.19"       # Hexing curses
-        "blight, 0.165, 0.84, 0.44, 1"        # Spreading blight
-        "plague, 0.25, 0.46, 0.45, 0.94"      # Plague magic
-        "curse, 0.68, -0.55, 0.265, 1.55"     # Cursed transformations
+        # === ELEMENTAL FORCES ===
+        "flame, 0.25, 0.46, 0.45, 0.94"       # Fire - flickering motion
+        "frost, 0.23, 1, 0.320, 1"            # Ice - sharp, clean
+        "storm, 0.68, -0.55, 0.265, 1.55"     # Lightning - explosive
+        "earth, 0.55, 0.055, 0.675, 0.19"     # Stone - heavy, solid
+        "wind, 0.165, 0.84, 0.44, 1"          # Air - flowing, gentle
         
-        # === SOULS & SPIRITS ===
-        "soul, 0.23, 1, 0.320, 1"             # Soul manipulation
-        "spirit, 0.4, 0, 0.6, 1"              # Restless spirits
-        "wraith, 0.7, 0, 0.2, 1"              # Wraith-like movement
-        "specter, 0.16, 1, 0.3, 1"            # Spectral apparitions
-        "phantom, 0.175, 0.885, 0.32, 1.275"  # Phantom manifestations
+        # === MYSTICAL CREATURES ===
+        "dragon, 0.68, -0.6, 0.32, 1.6"       # Powerful, majestic
+        "phoenix, 0.25, 0.46, 0.45, 0.94"     # Rising, rebirth
+        "wisp, 0.4, 0, 0.6, 1"                # Forest spirits
+        "wraith, 0.7, 0, 0.2, 1"              # Ghostly, haunting
+        "fairy, 0.175, 0.885, 0.32, 1.275"    # Playful, light
         
-        # === DARK LORDS & BOSSES ===
-        "lord, 0.68, -0.6, 0.32, 1.6"         # Dark lord power
-        "boss, 0.25, 0.46, 0.45, 0.94"        # Boss-tier magic
-        "champion, 0.215, 0.61, 0.355, 1"     # Champion abilities
-        "knight, 0.25, 0.1, 0.25, 1"          # Dark knight precision
-        "hunter, 0.4, 0, 0.6, 1"              # Blood hunter agility
+        # === ANCIENT MAGIC ===
+        "rune, 0.25, 0.1, 0.25, 1"            # Ancient symbols activating
+        "ritual, 0.445, 0.05, 0.55, 0.95"     # Ceremonial magic
+        "oracle, 0.23, 1, 0.32, 1"            # Prophetic visions
+        "cosmic, 0.215, 0.61, 0.355, 1"       # Universal forces
+        "void, 0.55, 0.085, 0.68, 0.53"       # Emptiness, dark magic
         
-        # === ANCIENT POWERS ===
-        "ancient, 0.445, 0.05, 0.55, 0.95"    # Ancient one magic
-        "primordial, 0.23, 1, 0.32, 1"        # Primordial forces
-        "cosmic, 0.215, 0.61, 0.355, 1"       # Cosmic horror
-        "abyss, 0.55, 0.085, 0.68, 0.53"      # Abyssal depths
-        "eclipse, 0.68, -0.55, 0.265, 1.55"   # Solar eclipse power
-        
-        # === RITUAL MAGIC ===
-        "ritual, 0.25, 0.46, 0.45, 0.94"      # Dark ritual casting
-        "sacrifice, 0.6, 0.04, 0.98, 0.335"   # Blood sacrifice
-        "summon, 0.68, -0.6, 0.32, 1.6"       # Summoning horrors
-        "banish, 0.55, 0.085, 0.68, 0.53"     # Banishing to shadow realm
-        "binding, 0.25, 0.1, 0.25, 1"         # Soul binding magic
-        
-        # === SPECIALIZED DARK EFFECTS ===
-        "portal, 0.1, 0.9, 0.2, 1.02"         # Dark portals
-        "miasma, 0.7, 0, 0.2, 1"              # Poisonous miasma
-        "shadow, 0.4, 0, 0.6, 1"              # Living shadows
-        "umbral, 0.68, -0.55, 0.265, 1.55"    # Umbral magic
-        "linear, 0, 0, 1, 1"                   # For continuous dark energy
+        # === SPECIALIZED EFFECTS ===
+        "portal, 0.1, 0.9, 0.2, 1.02"         # Dimensional gateways
+        "shimmer, 0.25, 0.46, 0.45, 0.94"     # Magical sparkle
+        "pulse, 0.4, 0, 0.6, 1"               # Rhythmic magic
+        "spiral, 0.68, -0.55, 0.265, 1.55"    # Swirling energy
+        "linear, 0, 0, 1, 1"                   # For continuous loops
       ];
       
       animation = [
-        # === GLOBAL DARK ENERGY ===
-        "global, 1, 5, cursed"                 # All animations cursed
+        # === GLOBAL MYSTICAL ENERGY ===
+        "global, 1, 8, ethereal"               # Universal magical energy
         
-        # === WINDOW MANIFESTATION (Dark Souls) ===
-        "windows, 1, 6, blood"                 # Windows bleed into reality
-        "windowsIn, 1, 7, summon, popin 85%"   # Summoning from the abyss
-        "windowsOut, 1, 5, banish, popin 60%"  # Banished to shadow realm
-        "windowsMove, 1, 6, wraith"             # Wraith-like repositioning
+        # === WINDOW MANIFESTATION (Core Magic) ===
+        "windows, 1, 8, manifest"              # Windows appear through magic
+        "windowsIn, 1, 9, summon, popin 80%"   # New windows summoned from void
+        "windowsOut, 1, 7, banish, popin 70%"  # Windows banished to void  
+        "windowsMove, 1, 8, teleport"          # Magical repositioning
         
-        # === CURSED FADING EFFECTS ===
-        "fade, 1, 6, hollow"                   # Hollowing fade
-        "fadeIn, 1, 7, blood"                  # Bleeding into existence
-        "fadeOut, 1, 5, decay"                 # Rotting away
-        "fadeDim, 1, 4, shadow"                # Shadow realm dimming
-        "fadeSwitch, 1, 6, corrupt"            # Corrupted transitions
-        "fadeShadow, 1, 5, specter"            # Spectral shadows
-        "fadeLayersIn, 1, 6, nightmare"        # Nightmarish layers
-        "fadeLayersOut, 1, 4, phantom"         # Phantom disappearance
+        # === ETHEREAL FADING EFFECTS ===
+        "fade, 1, 8, ethereal"                 # General ethereal fading
+        "fadeIn, 1, 10, manifest"              # Materializing from ether
+        "fadeOut, 1, 8, phase"                 # Phasing out of reality
+        "fadeDim, 1, 6, shadow"                # Shadow magic dimming
+        "fadeSwitch, 1, 9, enchant"            # Enchanted transitions
+        "fadeShadow, 1, 7, wraith"             # Wraith-like shadows
+        "fadeLayersIn, 1, 8, glamour"          # Illusory layers appearing
+        "fadeLayersOut, 1, 6, wisp"            # Spirit-like disappearance
         
-        # === ABYSSAL WORKSPACE TRAVEL ===
-        "workspaces, 1, 7, portal, slide"      # Dark portal travel
-        "specialWorkspace, 1, 6, abyss, slidevert" # Descend into abyss
+        # === DIMENSIONAL WORKSPACE MAGIC ===
+        "workspaces, 1, 10, portal, slide"     # Portal slide between realms
+        "specialWorkspace, 1, 9, dragon, slidevert" # Dragon's lair vertical access
         
-        # === DARK UI MANIFESTATION ===
-        "layers, 1, 6, miasma, fade"           # Poisonous UI miasma
-        "layersIn, 1, 5, eldritch, slide"      # Eldritch UI emergence
-        "layersOut, 1, 4, banish, fade"        # UI banished to void
+        # === MYSTICAL UI LAYERS ===
+        "layers, 1, 8, ethereal, fade"         # Ethereal layer magic with fade
+        "layersIn, 1, 8, enchant, slide"       # Enchanted overlays sliding in
+        "layersOut, 1, 6, banish, fade"        # Banishing overlays with fade
         
-        # === CURSED VISUAL EFFECTS ===
-        "border, 1, 8, ritual"                 # Ritual circle borders
-        "borderangle, 1, 12, linear, loop"     # Continuous dark energy flow
+        # === VISUAL ENCHANTMENTS ===
+        "border, 1, 12, rune"                  # Runic border magic
+        "borderangle, 1, 20, linear, loop"     # Continuous mystical energy
       ];
     };
   };

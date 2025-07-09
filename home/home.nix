@@ -55,8 +55,8 @@
     qbittorrent
     protonvpn-gui
     vesktop
-    materialgram
     ayugram-desktop
+    vivaldi
 
     # Productivity & Office
     libreoffice-qt6-fresh
